@@ -8,7 +8,13 @@
 int HashTableVoid::hash(const char * key)
 {
   // Add implementation here
-  return 0;
+  int h = 0;
+  const char *p = key;
+  while(*p) {
+  	h+=*p;
+	p++;
+}
+  return h%TableSize;
 }
 
 // Constructor for hash table. Initializes hash table
