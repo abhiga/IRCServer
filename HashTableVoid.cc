@@ -54,6 +54,15 @@ bool HashTableVoid::insertItem( const char * key, void * data)
 bool HashTableVoid::find( const char * key, void ** data)
 {
   // Add implementation here
+  int h = hash(key);
+  HashTableVoidEntry *e = _buckets[h];
+  while(e!=NULL) {
+  	if(!strcmp(e->_key, key)) {
+		*data = e->_data;
+		return true;
+	}
+	e = e->_next;
+	}
   return false;
 }
 
