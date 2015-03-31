@@ -70,6 +70,24 @@ bool HashTableVoid::find( const char * key, void ** data)
 bool HashTableVoid::removeElement(const char * key)
 {
   // Add implementation here
+  int h = hash(key);
+  HashTableVoidEntry * e = _buckets[h];
+  HashTableVoidEntry * prev = NULL;
+  while(e!=NULL) {
+  	if(!strcmp(e->_key,key)) {
+		if(prev!=NULL)
+			prev->_next = e->_next;
+		
+		else {
+			_buckets[h] = e->_next;
+		}
+	//	free(e->_key);
+		delete e;
+		return true;
+		}
+		prev = e;
+		e = e->_next;
+		}
   return false;
 }
 
