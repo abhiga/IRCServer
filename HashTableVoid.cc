@@ -94,7 +94,8 @@ bool HashTableVoid::removeElement(const char * key)
 // Creates an iterator object for this hash table
 HashTableVoidIterator::HashTableVoidIterator(HashTableVoid * hashTable)
 {
-  // Add implementation here
+  // Add implementation here:q
+  //
 
 }
 
