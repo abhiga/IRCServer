@@ -98,7 +98,6 @@ HashTableVoidIterator::HashTableVoidIterator(HashTableVoid * hashTable)
   _hashTable = hashTable;
   _currentBucket = 0;
  _currentEntry = _hashTable->_buckets[_currentBucket];
-  //_currentEntry = _buckets[0];
 
 }
 
@@ -106,12 +105,17 @@ HashTableVoidIterator::HashTableVoidIterator(HashTableVoid * hashTable)
 bool HashTableVoidIterator::next(const char * & key, void * & data)
 {
   // Add implementation here
+  bool flag = true;
   if(_currentEntry != NULL) {
   	if(_currentEntry -> _next != NULL){
   		_currentEntry = _currentEntry -> _next;
 		key = _currentEntry -> _key;
 		data = _currentEntry -> _data;
 		return true;
-	}}
+	}
+	else {
+		//for (int i = 0; i < TableSize; i++) {	
+	}
+	}
   return false;
 }
