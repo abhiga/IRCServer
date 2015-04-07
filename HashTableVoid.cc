@@ -94,17 +94,24 @@ bool HashTableVoid::removeElement(const char * key)
 // Creates an iterator object for this hash table
 HashTableVoidIterator::HashTableVoidIterator(HashTableVoid * hashTable)
 {
-  // Add implementation here:q
-  //HashTableVo
+  // Add implementation here
+  _hashTable = hashTable;
+  _currentBucket = 0;
+ // _currentEntry = _hashTable[0];
+  //_currentEntry = _buckets[0];
 
 }
 
 // Returns true if there is a next element. Stores data value in data.
 bool HashTableVoidIterator::next(const char * & key, void * & data)
 {
-	//int h = hash(key);
-	//HashTableVoidEntry *e = _buckets[h];
   // Add implementation here
+  /*if(_currentEntry != NULL) {
+  	if(_currentEntry -> _next != NULL){
+  		_currentEntry = _currentEntry -> _next;
+		key = _currentEntry -> _key;
+		data = _currentEntry -> _data;
+		return true;
+	}}*/
   return false;
 }
-
