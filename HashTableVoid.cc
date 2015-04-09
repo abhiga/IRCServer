@@ -116,10 +116,10 @@ bool HashTableVoidIterator::next(const char * & key, void * & data)
 	//int count = 0;
 	//bool flag = true;
 	if(_currentEntry -> _next != NULL){
-		_currentEntry = _currentEntry -> _next;
-		key = _currentEntry -> _key;
-		data = _currentEntry -> _data;
-		printf("abhiga\n");
+		//_currentEntry = _currentEntry -> _next;
+		//key = _currentEntry -> _key;
+		//data = _currentEntry -> _data;
+		//printf("abhiga\n");
 		return true;
 	}
 	else {
