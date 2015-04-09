@@ -7,20 +7,20 @@
 // Obtain the hash code of a key
 int HashTableVoid::hash(const char * key)
 {
-  // Add implementation here
-  int h = 0;
-  const char *p = key;
-  while(*p) {
-  	h+=*p;
-	p++;
-}
-  return h%TableSize;
+	// Add implementation here
+	int h = 0;
+	const char *p = key;
+	while(*p) {
+		h+=*p;
+		p++;
+	}
+	return h%TableSize;
 }
 
 // Constructor for hash table. Initializes hash table
 HashTableVoid::HashTableVoid()
 {
-  // Add implementation here
+	// Add implementation here
 	_buckets = (HashTableVoidEntry**)malloc(TableSize*sizeof(HashTableVoidEntry*));
 	for (int i = 0; i< TableSize; i++) {
 		_buckets[i] = NULL;
@@ -31,7 +31,7 @@ HashTableVoid::HashTableVoid()
 // Substitute content if key already exists.
 bool HashTableVoid::insertItem( const char * key, void * data)
 {
-  // Add implementation here
+	// Add implementation here
 	int h = hash(key);
 	HashTableVoidEntry *e = _buckets[h];
 	while(e!=NULL) {
@@ -53,69 +53,69 @@ bool HashTableVoid::insertItem( const char * key, void * data)
 // Returns false if key is does not exist
 bool HashTableVoid::find( const char * key, void ** data)
 {
-  // Add implementation here
-  int h = hash(key);
-  HashTableVoidEntry *e = _buckets[h];
-  while(e!=NULL) {
-  	if(!strcmp(e->_key, key)) {
-		*data = e->_data;
-		return true;
+	// Add implementation here
+	int h = hash(key);
+	HashTableVoidEntry *e = _buckets[h];
+	while(e!=NULL) {
+		if(!strcmp(e->_key, key)) {
+			*data = e->_data;
+			return true;
+		}
+		e = e->_next;
 	}
-	e = e->_next;
-	}
-  return false;
+	return false;
 }
 
 // Removes an element in the hash table. Return false if key does not exist.
 bool HashTableVoid::removeElement(const char * key)
 {
-  // Add implementation here
-  int h = hash(key);
-  HashTableVoidEntry * e = _buckets[h];
-  HashTableVoidEntry * prev = NULL;
-  while(e!=NULL) {
-  	if(!strcmp(e->_key,key)) {
-		if(prev!=NULL)
-			prev->_next = e->_next;
-		
-		else {
-			_buckets[h] = e->_next;
-		}
-	//	free(e->_key);
-		delete e;
-		return true;
+	// Add implementation here
+	int h = hash(key);
+	HashTableVoidEntry * e = _buckets[h];
+	HashTableVoidEntry * prev = NULL;
+	while(e!=NULL) {
+		if(!strcmp(e->_key,key)) {
+			if(prev!=NULL)
+				prev->_next = e->_next;
+
+			else {
+				_buckets[h] = e->_next;
+			}
+			//	free(e->_key);
+			delete e;
+			return true;
 		}
 		prev = e;
 		e = e->_next;
-		}
-  return false;
+	}
+	return false;
 }
 
 // Creates an iterator object for this hash table
 HashTableVoidIterator::HashTableVoidIterator(HashTableVoid * hashTable)
 {
-  // Add implementation here
-  _hashTable = hashTable;
-  _currentBucket = 0;
- _currentEntry = _hashTable->_buckets[_currentBucket];
+	// Add implementation here
+	_hashTable = hashTable;
+	_currentBucket = 0;
+	_currentEntry = _hashTable->_buckets[_currentBucket];
 
 }
 
 // Returns true if there is a next element. Stores data value in data.
 bool HashTableVoidIterator::next(const char * & key, void * & data)
 {
-  // Add implementation here
-  bool flag = true;
-  if(_currentEntry != NULL) {
-  	if(_currentEntry -> _next != NULL){
-  		_currentEntry = _currentEntry -> _next;
-		key = _currentEntry -> _key;
-		data = _currentEntry -> _data;
-		return true;
+	// Add implementation here
+	bool flag = true;
+	if(_currentEntry != NULL) {
+		if(_currentEntry -> _next != NULL){
+			_currentEntry = _currentEntry -> _next;
+			key = _currentEntry -> _key;
+			data = _currentEntry -> _data;
+			return true;
+		}
+		else {
+			//for (int i = 0; i < TableSize; i++) {	
+		}
+		}
+		return false;
 	}
-	else {
-		//for (int i = 0; i < TableSize; i++) {	
-	}
-	}
-  return false;
-}
