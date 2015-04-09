@@ -121,16 +121,17 @@ bool HashTableVoidIterator::next(const char * & key, void * & data)
 	//return false;
 	//}
 	if(_currentEntry == NULL){
-		/*for(int i = _currentBucket; i<= _hashTable -> TableSize; i++) {
+		for(int i = _currentBucket; i< _hashTable -> TableSize; i++) {
 			_currentBucket++;
 			if(_hashTable -> _buckets[i]!=NULL){
 				_currentEntry = _hashTable -> _buckets[i];
 				key = _currentEntry -> _key;
 				data = _currentEntry -> _data;
 				return true;
-			}}*/
 			}
 
+		}
+	}
 	else if(_currentEntry -> _next != NULL){
 		_currentEntry = _currentEntry -> _next;
 		key = _currentEntry -> _key;
@@ -139,7 +140,7 @@ bool HashTableVoidIterator::next(const char * & key, void * & data)
 		return true;
 	}
 	else {
-		for(int i = _currentBucket; i<= _hashTable -> TableSize; i++) {
+		for(int i = _currentBucket; i< _hashTable -> TableSize; i++) {
 			_currentBucket++;
 			if(_hashTable -> _buckets[i]!=NULL){
 				_currentEntry = _hashTable -> _buckets[i];
