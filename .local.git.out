@@ -718,3 +718,6 @@ After doing this, you may fix the identity used for this commit with:
 [master 14ad63c] Make IRCServer
  3 files changed, 6 insertions(+), 3 deletions(-)
  rewrite IRCServer (90%)
+[master 7263ec3] Make IRCServer
+ 3 files changed, 4 insertions(+)
+ rewrite IRCServer (63%)
