@@ -310,7 +310,7 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 		const char * msg = "DENIED\r\n";
 		write(fd,msg,strlen(msg));
 	}
-	printf("%s\n", store);
+	fprintf(file, "%s\n", store);
 
 }
 
