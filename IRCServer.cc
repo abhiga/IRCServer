@@ -289,8 +289,8 @@ void
 IRCServer::addUser(int fd, const char * user, const char * password, const char * args)
 {
 	// Here add a new user. For now always return OK.
-//	HashTableVoid U;
-//	bool e = U.insertItem("abhiga",(void*) 2);
+	HashTableVoid u;
+	bool e = u.insertItem("abhiga",(void*) 2);
 	const char * msg =  "OK\r\n";
 	write(fd, msg, strlen(msg));
 
