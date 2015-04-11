@@ -278,7 +278,13 @@ IRCServer::processRequest( int fd )
 IRCServer::initialize()
 {
 	// Open password file
-
+	char *c = (char*) malloc(100*sizeof(char));
+	FILE *f = fopen("password.txt", "r");
+	if(f!=NULL){
+		while(fscanf(f, "%s", c) == 1) {
+			printf("%s\n", c);
+		}
+	}
 	// Initialize users in room
 
 	// Initalize message list
@@ -288,6 +294,8 @@ IRCServer::initialize()
 bool
 IRCServer::checkPassword(int fd, const char * user, const char * password) {
 	// Here check the password
+	//if(Users.find(user, (void**)password))
+		
 	return true;
 }
 
