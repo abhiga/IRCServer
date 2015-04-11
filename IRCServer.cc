@@ -256,6 +256,12 @@ IRCServer::processRequest( int fd )
 	else if (!strcmp(command, "GET-ALL-USERS")) {
 		getAllUsers(fd, user, password, args);
 	}
+	else if (!strcmp(command, "CREATE-ROOM")) {
+		createRoom(fd, user, password, args);
+	}
+	else if (!strcmp(command, "LIST-ROOMS")) {
+		listRooms(fd, user, password, args);
+	}
 	else {
 		const char * msg =  "UNKNOWN COMMAND\r\n";
 		write(fd, msg, strlen(msg));
@@ -272,7 +278,7 @@ void
 IRCServer::initialize()
 {
 	// Open password file
-
+	
 	// Initialize users in room
 
 	// Initalize message list
@@ -326,4 +332,11 @@ IRCServer::getAllUsers(int fd, const char * user, const char * password,const  c
 {
 
 }
+void
+IRCServer::createRoom(int fd, const char * user, const char * password, const char * args) {
 
+}
+void
+IRCServer::listRooms(int fd, const char * user, const char * password, const char * args) {
+
+}
