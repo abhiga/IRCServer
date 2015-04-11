@@ -285,7 +285,7 @@ IRCServer::initialize()
 		while(fscanf(f, "%s", c) == 1) {
 			user = strtok(c, "|");
 			pass = strtok(NULL,"|");
-			printf("%s%s\n", user, pass);
+			printf("%s-%s\n", user, pass);
 		}
 	}
 	// Initialize users in room
