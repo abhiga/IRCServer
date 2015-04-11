@@ -34,7 +34,7 @@ const char * usage =
 #include <iostream>
 using namespace std;
 HashTableVoid Users;
-struct rooms {
+struct Room {
 	vector<string> users;
 	vector<string> messages;
 	};
@@ -297,9 +297,9 @@ IRCServer::initialize()
 		}
 	}
 	// Initialize users in room
-
+	
 	// Initalize message list
-
+	vector<Room> rooms;
 }
 
 bool
