@@ -222,7 +222,7 @@ IRCServer::processRequest( int fd )
 			j = 0;
 		}
 	}
-	printf("%s%s",ch[0],ch[1]);
+	printf("abc\n");//,ch[0],ch[1]);
 	const char * command = "ADD-USER";
 	const char * user = "peter";
 	const char * password = "spider";
