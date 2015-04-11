@@ -348,7 +348,7 @@ IRCServer::getAllUsers(int fd, const char * user, const char * password,const  c
 	char *ptr;
 	void* pass;
 	char *msg;
-	if(!(Users.find(user, (void**)password))) {
+	if((Users.find(user, (void**)password))) {
 			HashTableVoidIterator iterator(&Users);
 			while(iterator.next(ch,pass)) {
 				printf("%s\n", ch);
