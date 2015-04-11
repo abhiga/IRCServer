@@ -31,7 +31,7 @@ const char * usage =
 #include "HashTableVoid.h"
 #include "IRCServer.h"
 
-//HashTableVoid Users;
+HashTableVoid Users;
 int QueueLength = 5;
 
 int
@@ -289,8 +289,7 @@ void
 IRCServer::addUser(int fd, const char * user, const char * password, const char * args)
 {
 	// Here add a new user. For now always return OK.
-	HashTableVoid u;
-	bool e = u.insertItem("abhiga",(void*) 2);
+	Users.insertItem(user, (void*)password);
 	const char * msg =  "OK\r\n";
 	write(fd, msg, strlen(msg));
 
