@@ -35,6 +35,7 @@ const char * usage =
 using namespace std;
 HashTableVoid Users;
 struct Room {
+	string name;
 	vector<string> users;
 	vector<string> messages;
 	};
