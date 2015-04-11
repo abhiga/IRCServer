@@ -30,7 +30,6 @@ const char * usage =
 #include <time.h>
 #include "HashTableVoid.h"
 #include "IRCServer.h"
-
 HashTableVoid Users;
 HashTableVoid Rooms;
 int QueueLength = 5;
@@ -306,8 +305,7 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 		const char * msg = "DENIED\r\n";
 		write(fd,msg,strlen(msg));
 }
-
-	return;		
+		
 }
 
 void
@@ -345,7 +343,24 @@ IRCServer::getUsersInRoom(int fd, const char * user, const char * password, cons
 
 void
 IRCServer::getAllUsers(int fd, const char * user, const char * password,const  char * args)
-{
+{	
+	const char * ch;
+	char *ptr;
+	void* pass;
+	char *msg;
+	if(!(Users.find(user, (void**)password))) {
+			HashTableVoidIterator iterator(&Users);
+			while(iterator.next(ch,pass)) {
+				strcpy(ptr,ch);
+				strcat(ptr, "\r\n");
+	                 	strcat(msg, ch);
+			}
+	                 write(fd,msg,strlen(msg));
+	         }
+	         else {
+	                 const char * msg = "DENIED\r\n";
+	                 write(fd,msg,strlen(msg));
+	         }
 
 }
 
