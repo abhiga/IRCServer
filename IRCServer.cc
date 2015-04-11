@@ -211,7 +211,18 @@ IRCServer::processRequest( int fd )
 	printf("COMMAND <user> <password> <arguments>. See below.\n");
 	printf("You need to separate the commandLine into those components\n");
 	printf("For now, command, user, and password are hardwired.\n");
-
+	char ch[10][10];
+	char *p = commandLine;
+	int i = 0, j = 0;
+	while(*p != '\0') {
+		ch[i][j++] = *p;
+		if(*p == '\r' || *p == ' ') {
+			ch[i][j] = '\0';
+			i++;
+			j = 0;
+		}
+	}
+	printf("%s%s",ch[0],ch[1]);
 	const char * command = "ADD-USER";
 	const char * user = "peter";
 	const char * password = "spider";
