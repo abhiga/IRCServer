@@ -332,7 +332,7 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 	void
 IRCServer::enterRoom(int fd, const char * user, const char * password, const char * args)
 {
-	if(!(Users.find(user, (void**)password))) {
+	if(checkPassword(fd, user, password)) {
 		const char * msg = "OK\r\n";
 		write(fd,msg,strlen(msg));
 	}
@@ -369,7 +369,7 @@ IRCServer::getAllUsers(int fd, const char * user, const char * password,const  c
 	char *ptr;
 	void* pass;
 	char *msg;
-	if(Users.find(user, (void**)password)) {
+	if(checkPassword(fd, user, password)) {
 		HashTableVoidIterator iterator(&Users);
 		while(iterator.next(ch,pass)) {
 			//printf("%s\n", ch);
