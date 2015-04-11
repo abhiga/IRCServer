@@ -29,9 +29,10 @@ const char * usage =
 #include <string.h>
 #include <stdio.h>
 #include <time.h>
-
+#include "HashTableVoid.h"
 #include "IRCServer.h"
 
+//HashTableVoid Users;
 int QueueLength = 5;
 
 int
@@ -262,8 +263,8 @@ IRCServer::processRequest( int fd )
 	}
 
 	// Send OK answer
-	const char * msg =  "OK\n";
-	write(fd, msg, strlen(msg));
+	//const char * msg =  "OK\n";
+	//write(fd, msg, strlen(msg));
 
 	close(fd);	
 }
@@ -289,7 +290,8 @@ void
 IRCServer::addUser(int fd, const char * user, const char * password, const char * args)
 {
 	// Here add a new user. For now always return OK.
-
+	//HashTableVoid U;
+	//bool e = U.insertItem("abhiga",(void*) 2);
 	const char * msg =  "OK\r\n";
 	write(fd, msg, strlen(msg));
 
