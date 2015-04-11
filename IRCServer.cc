@@ -322,7 +322,7 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 	strcat(store, "|");
 	strcat(store, password);
 	if(!checkPassword(fd, user, password)) {
-
+		fprintf(file, "%s\n", store);
 		Users.insertItem(user, (void*)password);
 		const char * msg =  "OK\r\n";
 		write(fd, msg, strlen(msg));
@@ -331,7 +331,7 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 		const char * msg = "DENIED\r\n";
 		write(fd,msg,strlen(msg));
 	}
-	fprintf(file, "%s\n", store);
+	//fprintf(file, "%s\n", store);
 	fclose(file);
 }
 
