@@ -43,7 +43,7 @@ IRCServer::open_server_socket(int port) {
 	serverIPAddress.sin_family = AF_INET;
 	serverIPAddress.sin_addr.s_addr = INADDR_ANY;
 	serverIPAddress.sin_port = htons((u_short) port);
-  
+
 	// Allocate a socket
 	int masterSocket =  socket(PF_INET, SOCK_STREAM, 0);
 	if ( masterSocket < 0) {
@@ -55,17 +55,17 @@ IRCServer::open_server_socket(int port) {
 	// have to wait about 2 minutes before reusing the sae port number
 	int optval = 1; 
 	int err = setsockopt(masterSocket, SOL_SOCKET, SO_REUSEADDR, 
-			     (char *) &optval, sizeof( int ) );
-	
+			(char *) &optval, sizeof( int ) );
+
 	// Bind the socket to the IP address and port
 	int error = bind( masterSocket,
-			  (struct sockaddr *)&serverIPAddress,
-			  sizeof(serverIPAddress) );
+			(struct sockaddr *)&serverIPAddress,
+			sizeof(serverIPAddress) );
 	if ( error ) {
 		perror("bind");
 		exit( -1 );
 	}
-	
+
 	// Put socket in listening mode and set the 
 	// size of the queue of unprocessed connections
 	error = listen( masterSocket, QueueLength);
@@ -77,33 +77,33 @@ IRCServer::open_server_socket(int port) {
 	return masterSocket;
 }
 
-void
+	void
 IRCServer::runServer(int port)
 {
 	int masterSocket = open_server_socket(port);
 
 	initialize();
-	
+
 	while ( 1 ) {
-		
+
 		// Accept incoming connections
 		struct sockaddr_in clientIPAddress;
 		int alen = sizeof( clientIPAddress );
 		int slaveSocket = accept( masterSocket,
-					  (struct sockaddr *)&clientIPAddress,
-					  (socklen_t*)&alen);
-		
+				(struct sockaddr *)&clientIPAddress,
+				(socklen_t*)&alen);
+
 		if ( slaveSocket < 0 ) {
 			perror( "accept" );
 			exit( -1 );
 		}
-		
+
 		// Process request.
 		processRequest( slaveSocket );		
 	}
 }
 
-int
+	int
 main( int argc, char ** argv )
 {
 	// Print usage if not enough arguments
@@ -111,7 +111,7 @@ main( int argc, char ** argv )
 		fprintf( stderr, "%s", usage );
 		exit( -1 );
 	}
-	
+
 	// Get the port from the arguments
 	int port = atoi( argv[1] );
 
@@ -119,7 +119,7 @@ main( int argc, char ** argv )
 
 	// It will never return
 	ircServer.runServer(port);
-	
+
 }
 
 //
@@ -167,7 +167,7 @@ main( int argc, char ** argv )
 //            \r\n
 //
 
-void
+	void
 IRCServer::processRequest( int fd )
 {
 	// Buffer used to store the comand received from the client
@@ -175,11 +175,11 @@ IRCServer::processRequest( int fd )
 	char commandLine[ MaxCommandLine + 1 ];
 	int commandLineLength = 0;
 	int n;
-	
+
 	// Currently character read
 	unsigned char prevChar = 0;
 	unsigned char newChar = 0;
-	
+
 	//
 	// The client should send COMMAND-LINE\n
 	// Read the name of the client character by character until a
@@ -188,22 +188,22 @@ IRCServer::processRequest( int fd )
 
 	// Read character by character until a \n is found or the command string is full.
 	while ( commandLineLength < MaxCommandLine &&
-		read( fd, &newChar, 1) > 0 ) {
+			read( fd, &newChar, 1) > 0 ) {
 
 		if (newChar == '\n' && prevChar == '\r') {
 			break;
 		}
-		
+
 		commandLine[ commandLineLength ] = newChar;
 		commandLineLength++;
 
 		prevChar = newChar;
 	}
-	
+
 	// Add null character at the end of the string
 	// Eliminate last \r
 	commandLineLength--;
-        commandLine[ commandLineLength ] = 0;
+	commandLine[ commandLineLength ] = 0;
 
 	printf("RECEIVED: %s\n", commandLine);
 
@@ -274,11 +274,11 @@ IRCServer::processRequest( int fd )
 	close(fd);	
 }
 
-void
+	void
 IRCServer::initialize()
 {
 	// Open password file
-	
+
 	// Initialize users in room
 
 	// Initalize message list
@@ -291,10 +291,15 @@ IRCServer::checkPassword(int fd, const char * user, const char * password) {
 	return true;
 }
 
-void
+	void
 IRCServer::addUser(int fd, const char * user, const char * password, const char * args)
 {
 	// Here add a new user. For now always return OK.
+	char *store;
+	FILE *file = fopen("password.txt", "a");
+	store = strdup(user);
+	strcat(store, "|");
+	strcat(store, password);
 	if(!Users.find(user, (void**)password)) {
 
 		Users.insertItem(user, (void*)password);
@@ -304,11 +309,12 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 	else {
 		const char * msg = "DENIED\r\n";
 		write(fd,msg,strlen(msg));
-}
-		
+	}
+	printf("%s\n", store);
+
 }
 
-void
+	void
 IRCServer::enterRoom(int fd, const char * user, const char * password, const char * args)
 {
 	if(!(Users.find(user, (void**)password))) {
@@ -321,27 +327,27 @@ IRCServer::enterRoom(int fd, const char * user, const char * password, const cha
 	}
 }
 
-void
+	void
 IRCServer::leaveRoom(int fd, const char * user, const char * password, const char * args)
 {
 }
 
-void
+	void
 IRCServer::sendMessage(int fd, const char * user, const char * password, const char * args)
 {
 }
 
-void
+	void
 IRCServer::getMessages(int fd, const char * user, const char * password, const char * args)
 {
 }
 
-void
+	void
 IRCServer::getUsersInRoom(int fd, const char * user, const char * password, const char * args)
 {
 }
 
-void
+	void
 IRCServer::getAllUsers(int fd, const char * user, const char * password,const  char * args)
 {	
 	const char * ch;
@@ -349,21 +355,21 @@ IRCServer::getAllUsers(int fd, const char * user, const char * password,const  c
 	void* pass;
 	char *msg;
 	if(Users.find(user, (void**)password)) {
-			HashTableVoidIterator iterator(&Users);
-			while(iterator.next(ch,pass)) {
-				//printf("%s\n", ch);
-				//strcpy(ptr,ch);
-				//strcat(ptr, " \r\n");
-	                 	//strcat(msg, ch);
-			
-	                	 write(fd,ch,strlen(ch));
-				 write(fd,"\r\n",strlen("\r\n"));
-	         }
-		 }
-	         else {
-	                 const char * msg = "DENIED\r\n";
-	                 write(fd,msg,strlen(msg));
-	         }
+		HashTableVoidIterator iterator(&Users);
+		while(iterator.next(ch,pass)) {
+			//printf("%s\n", ch);
+			//strcpy(ptr,ch);
+			//strcat(ptr, " \r\n");
+			//strcat(msg, ch);
+
+			write(fd,ch,strlen(ch));
+			write(fd,"\r\n",strlen("\r\n"));
+		}
+	}
+	else {
+		const char * msg = "DENIED\r\n";
+		write(fd,msg,strlen(msg));
+	}
 
 }
 
