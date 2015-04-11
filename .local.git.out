@@ -629,3 +629,6 @@ After doing this, you may fix the identity used for this commit with:
  1 file changed, 2 insertions(+)
 [master 1256ad6] Make IRCServer
  3 files changed, 8 insertions(+), 6 deletions(-)
+[master 92c5821] Make IRCServer
+ 4 files changed, 8 insertions(+), 4 deletions(-)
+ create mode 100644 .HashTableVoidTest.cc.swp
