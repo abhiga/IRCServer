@@ -649,3 +649,6 @@ After doing this, you may fix the identity used for this commit with:
  rewrite IRCServer (65%)
 [master c18a05a] Make IRCServer
  3 files changed, 14 insertions(+), 3 deletions(-)
+[master 9dd0aa9] Make IRCServer
+ 4 files changed, 3 insertions(+), 1 deletion(-)
+ delete mode 100644 .HashTableVoid.cc.swp

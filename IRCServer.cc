@@ -313,7 +313,7 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 void
 IRCServer::enterRoom(int fd, const char * user, const char * password, const char * args)
 {
-	if(!Users.find(user, (void**)password)) {
+	if(!(Users.find(user, (void**)password))) {
 		const char * msg = "OK\r\n";
 		write(fd,msg,strlen(msg));
 	}
