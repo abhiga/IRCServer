@@ -211,7 +211,7 @@ IRCServer::processRequest( int fd )
 	printf("COMMAND <user> <password> <arguments>. See below.\n");
 	printf("You need to separate the commandLine into those components\n");
 	printf("For now, command, user, and password are hardwired.\n");
-	char ch[10][10];
+	char ch[10][100];
 	char *p = commandLine;
 	//printf("abcd\n");
 	int i = 0, j = 0;
