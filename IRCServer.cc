@@ -31,11 +31,12 @@ const char * usage =
 #include "HashTableVoid.h"
 #include "IRCServer.h"
 #include <vector>
+#include <iostream>
 using namespace std;
 HashTableVoid Users;
 struct rooms {
-	vector <char> users;
-	vector <char> messages;
+	vector<string> users;
+	vector<string> messages;
 	};
 int QueueLength = 5;
 
