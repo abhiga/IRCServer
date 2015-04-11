@@ -217,7 +217,7 @@ IRCServer::processRequest( int fd )
 	int i = 0, j = 0;
 	while(*p != '\0') {
 		ch[i][j++] = *p;
-		if(*p == '\r' || *p == ' ') {
+		if(*p == ' ') {
 			ch[i][j] = '\0';
 			i++;
 			j = 0;
