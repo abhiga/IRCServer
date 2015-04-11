@@ -224,11 +224,11 @@ IRCServer::processRequest( int fd )
 		}
 		p++;
 	}
-	printf("%s%s\n",ch[0],ch[1]);
-	const char * command = "ADD-USER";
-	const char * user = "peter";
-	const char * password = "spider";
-	const char * args = "";
+	//printf("%s%s\n",ch[0],ch[1]);
+	const char * command = ch[0];
+	const char * user = ch[1];
+	const char * password = ch[2];
+	const char * args = ch[3];
 
 	printf("command=%s\n", command);
 	printf("user=%s\n", user);
