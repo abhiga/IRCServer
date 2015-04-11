@@ -30,6 +30,7 @@ const char * usage =
 #include <time.h>
 #include "HashTableVoid.h"
 #include "IRCServer.h"
+#include <vector>
 HashTableVoid Users;
 HashTableVoid Rooms;
 int QueueLength = 5;
@@ -230,7 +231,7 @@ IRCServer::processRequest( int fd )
 	const char * user = ch[1];
 	const char * password = ch[2];
 	const char * args = ch[3];
-	memset(ch, NULL, sizeof(ch[0][0] * 10 * 100));
+	//memset(ch, NULL, sizeof(ch[0][0] * 10 * 100));
 
 	printf("command=%s\n", command);
 	printf("user=%s\n", user);
