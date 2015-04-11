@@ -315,7 +315,7 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 	store = strdup(user);
 	strcat(store, "|");
 	strcat(store, password);
-	if(!Users.find(user, (void**)password)) {
+	if(!checkPassword(fd, user, password)) {
 
 		Users.insertItem(user, (void*)password);
 		const char * msg =  "OK\r\n";
