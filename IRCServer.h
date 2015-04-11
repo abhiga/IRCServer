@@ -23,7 +23,7 @@ public:
 	void getAllUsers(int fd, const char * user, const char * password, const char * args);
 	void runServer(int port);
 	void listRooms(int fd, const char * user, const char * password, const char * args);
-	void createRoom(int fd, const char * user, const char * password, const char * args);
+	void createRoom(int fd, const char * user, const char * password, const char * room);
 };
 
 #endif

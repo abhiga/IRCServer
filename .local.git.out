@@ -640,3 +640,6 @@ After doing this, you may fix the identity used for this commit with:
 [master 5f640c9] Make IRCServer
  3 files changed, 5 insertions(+), 3 deletions(-)
  rewrite IRCServer (60%)
+[master 301d626] Make IRCServer
+ 5 files changed, 20 insertions(+), 2 deletions(-)
+ rename .HashTableVoidTest.cc.swp => .IRCServer.cc.swp (92%)
