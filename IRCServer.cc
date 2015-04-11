@@ -235,7 +235,7 @@ IRCServer::processRequest( int fd )
 	printf( "password=%s\n", password );
 	printf("args=%s\n", args);
 
-	if (!strcmp(command, "ADD-USER")) {
+	if (!strcmp("ADD-USER", "ADD-USER")) {
 		addUser(fd, user, password, args);
 	}
 	else if (!strcmp(command, "ENTER-ROOM")) {
