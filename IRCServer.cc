@@ -213,6 +213,7 @@ IRCServer::processRequest( int fd )
 	printf("For now, command, user, and password are hardwired.\n");
 	char ch[10][10];
 	char *p = commandLine;
+	printf("abcd\n");
 	int i = 0, j = 0;
 	while(*p != '\0') {
 		ch[i][j++] = *p;
@@ -221,6 +222,7 @@ IRCServer::processRequest( int fd )
 			i++;
 			j = 0;
 		}
+		p++;
 	}
 	printf("abc\n");//,ch[0],ch[1]);
 	const char * command = "ADD-USER";
