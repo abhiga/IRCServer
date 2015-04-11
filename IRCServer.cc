@@ -278,11 +278,14 @@ IRCServer::processRequest( int fd )
 IRCServer::initialize()
 {
 	// Open password file
+	char *user, *pass;
 	char *c = (char*) malloc(100*sizeof(char));
 	FILE *f = fopen("password.txt", "r");
 	if(f!=NULL){
 		while(fscanf(f, "%s", c) == 1) {
-			printf("%s\n", c);
+			user = strtok(c, "|");
+			pass = strtok(NULL,"|");
+			printf("%s%s\n", user, pass);
 		}
 	}
 	// Initialize users in room
