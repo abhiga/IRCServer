@@ -351,13 +351,15 @@ IRCServer::getAllUsers(int fd, const char * user, const char * password,const  c
 	if(Users.find(user, (void**)password)) {
 			HashTableVoidIterator iterator(&Users);
 			while(iterator.next(ch,pass)) {
-				printf("%s\n", ch);
-				strcpy(ptr,ch);
-				strcat(ptr, " \r\n");
-	                 	strcat(msg, ch);
-			}
-	                 write(fd,msg,strlen(msg));
+				//printf("%s\n", ch);
+				//strcpy(ptr,ch);
+				//strcat(ptr, " \r\n");
+	                 	//strcat(msg, ch);
+			
+	                	 write(fd,ch,strlen(ch));
+				 write(fd,"\r\n",strlen("\r\n"));
 	         }
+		 }
 	         else {
 	                 const char * msg = "DENIED\r\n";
 	                 write(fd,msg,strlen(msg));
