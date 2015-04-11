@@ -207,10 +207,10 @@ IRCServer::processRequest( int fd )
 
 	printf("RECEIVED: %s\n", commandLine);
 
-	printf("The commandLine has the following format:\n");
-	printf("COMMAND <user> <password> <arguments>. See below.\n");
-	printf("You need to separate the commandLine into those components\n");
-	printf("For now, command, user, and password are hardwired.\n");
+	//printf("The commandLine has the following format:\n");
+	//printf("COMMAND <user> <password> <arguments>. See below.\n");
+	//printf("You need to separate the commandLine into those components\n");
+	//printf("For now, command, user, and password are hardwired.\n");
 	char ch[10][100];
 	char *p = commandLine;
 	//printf("abcd\n");
@@ -262,8 +262,8 @@ IRCServer::processRequest( int fd )
 	}
 
 	// Send OK answer
-	//const char * msg =  "OK\n";
-	//write(fd, msg, strlen(msg));
+	const char * msg =  "OK\n";
+	write(fd, msg, strlen(msg));
 
 	close(fd);	
 }
