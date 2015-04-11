@@ -235,8 +235,7 @@ IRCServer::processRequest( int fd )
 	printf("user=%s\n", user);
 	printf( "password=%s\n", password );
 	printf("args=%s\n", args);
-	int a = 0;
-	if (!(a=strcmp(command, "ADD-USER"))) {
+	if (!strcmp(command, "ADD-USER")) {
 		addUser(fd, user, password, args);
 	}
 	else if (!strcmp(command, "ENTER-ROOM")) {
@@ -261,7 +260,6 @@ IRCServer::processRequest( int fd )
 		const char * msg =  "UNKNOWN COMMAND\r\n";
 		write(fd, msg, strlen(msg));
 	}
-	printf("%d\n",a);
 
 	// Send OK answer
 	//const char * msg =  "OK\n";
