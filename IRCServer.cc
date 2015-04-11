@@ -40,7 +40,7 @@ struct Room {
 	vector<string> messages;
 	};
 int QueueLength = 5;
-
+//vector<Room> rooms;
 int
 IRCServer::open_server_socket(int port) {
 
@@ -300,7 +300,7 @@ IRCServer::initialize()
 	// Initialize users in room
 	
 	// Initalize message list
-	vector<Room> rooms;
+	//vector<Room> rooms;
 }
 
 bool
@@ -397,6 +397,27 @@ IRCServer::getAllUsers(int fd, const char * user, const char * password,const  c
 
 void
 IRCServer::createRoom(int fd, const char * user, const char * password, const char * room) {
+	/*bool check = false;
+	if(checkPassword(fd, user, password)) {
+		for(int i = 0; i < rooms.size(); i++) {
+			if(strcmp(rooms[i].name, room)==0)
+				check = true;
+		}
+		if(check) {
+			const char * msg = "DENIED\r\n";
+			write(fd,msg,strlen(msg));
+		}
+		else {
+			struct Room nr;
+			nr.name = *room;
+			rooms.push_back(nr);
+		}
+
+	}
+	else {
+		 const char * msg = "DENIED\r\n";
+                 write(fd,msg,strlen(msg));
+	}*/
 }
 
 void
