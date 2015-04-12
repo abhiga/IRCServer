@@ -249,6 +249,7 @@ IRCServer::processRequest( int fd )
 	printf("user=%s\n", user);
 	printf( "password=%s\n", password );
 	printf("args=%s\n", args);
+	printf("args1=%s\n", args1);
 	if (!strcmp(command, "ADD-USER")) {
 		addUser(fd, user, password, args);
 	}
@@ -259,10 +260,10 @@ IRCServer::processRequest( int fd )
 		leaveRoom(fd, user, password, args);
 	}
 	else if (!strcmp(command, "SEND-MESSAGE")) {
-		sendMessage(fd, user, password, args);
+		sendMessage(fd, user, password, args, args1);
 	}
 	else if (!strcmp(command, "GET-MESSAGES")) {
-		getMessages(fd, user, password, args);
+		getMessages(fd, user, password, args, args1);
 	}
 	else if (!strcmp(command, "GET-USERS-IN-ROOM")) {
 		getUsersInRoom(fd, user, password, args);
@@ -425,12 +426,12 @@ IRCServer::leaveRoom(int fd, const char * user, const char * password, const cha
 }
 
 	void
-IRCServer::sendMessage(int fd, const char * user, const char * password, const char * args)
+IRCServer::sendMessage(int fd, const char * user, const char * password, const char * args, const char * args1)
 {
 }
 
 	void
-IRCServer::getMessages(int fd, const char * user, const char * password, const char * args)
+IRCServer::getMessages(int fd, const char * user, const char * password, const char * args, const char * args1)
 {
 }
 
