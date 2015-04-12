@@ -802,3 +802,5 @@ After doing this, you may fix the identity used for this commit with:
 [master 8535e9b] Make IRCServer
  5 files changed, 9 insertions(+), 5 deletions(-)
  delete mode 100644 .HashTableVoid.cc.swp
+[master 64e5659] Make IRCServer
+ 3 files changed, 4 insertions(+), 1 deletion(-)
