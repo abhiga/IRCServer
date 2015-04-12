@@ -38,7 +38,7 @@ struct Room {
 	char *name;
 	vector<char*> users;
 	vector<char*> messages;
-	};
+};
 int QueueLength = 5;
 vector<Room> rooms;
 int
@@ -298,7 +298,7 @@ IRCServer::initialize()
 		}
 	}
 	// Initialize users in room
-	
+
 	// Initalize message list
 	//vector<Room> rooms;
 }
@@ -306,8 +306,10 @@ IRCServer::initialize()
 bool
 IRCServer::checkPassword(int fd, const char * user, const char * password) {
 	// Here check the password
-	if(Users.find(user, (void**)password))
-		return true;
+	char *pass;
+	if(Users.find(user, (void**)pass))
+		if(strcmp(password,pass)==0)
+			return true;
 	else 
 		return false;
 }
@@ -347,34 +349,36 @@ IRCServer::enterRoom(int fd, const char * user, const char * password, const cha
 				check = true;
 				break;
 			}
-			
-			 }
+
+		}
 		if(check) { 
 			for(int i = 0; i < rooms[pos].users.size(); i++) {
 				if(strcmp(rooms[pos].users[i],user) == 0) {
 					const char * msg = "DENIED\r\n";
-				        write(fd,msg,strlen(msg));
+					write(fd,msg,strlen(msg));
 					return;
 				}
 			}
-					rooms[pos].users.push_back(strdup(user));
-					const char * msg = "OK\n";
-					write(fd,msg,strlen(msg));
-				
+			rooms[pos].users.push_back(strdup(user));
+			const char * msg = "OK\n";
+			write(fd,msg,strlen(msg));
+
+		}
+		else {
+			const char * msg = "DENIED\r\n";
+			write(fd,msg,strlen(msg));
+		}
 	}
 	else {
 		const char * msg = "DENIED\r\n";
 		write(fd,msg,strlen(msg));
 	}
 }
-else {
-                 const char * msg = "DENIED\r\n";
-                write(fd,msg,strlen(msg));
-       }
-}
 	void
 IRCServer::leaveRoom(int fd, const char * user, const char * password, const char * args)
-{
+{	
+	bool check = false;
+
 }
 
 	void
@@ -392,13 +396,13 @@ IRCServer::getUsersInRoom(int fd, const char * user, const char * password, cons
 {	bool check = false;
 	int pos = 0;
 	if(checkPassword(fd, user, password)) {
-               for(int i = 0; i < rooms.size(); i++) {
-	       		if(strcmp(rooms[i].name, room) == 0) {
+		for(int i = 0; i < rooms.size(); i++) {
+			if(strcmp(rooms[i].name, room) == 0) {
 				check = true;
 				pos = i;
 				break;
 			}
-         	}
+		}
 		if(check) {
 			for (int i = 0; i < rooms[pos].users.size(); i++) {
 				write(fd, rooms[pos].users[i],strlen(rooms[pos].users[i]));
@@ -407,13 +411,13 @@ IRCServer::getUsersInRoom(int fd, const char * user, const char * password, cons
 		}
 		else {
 			const char * msg = "DENIED\r\n";
-	            	write(fd,msg,strlen(msg));
+			write(fd,msg,strlen(msg));
 		}
 	}
-        else {
-                const char * msg = "DENIED\r\n";
-                write(fd,msg,strlen(msg));
-         }
+	else {
+		const char * msg = "DENIED\r\n";
+		write(fd,msg,strlen(msg));
+	}
 
 }
 
@@ -465,8 +469,8 @@ IRCServer::createRoom(int fd, const char * user, const char * password, const ch
 
 	}
 	else {
-		 const char * msg = "DENIED\r\n";
-                 write(fd,msg,strlen(msg));
+		const char * msg = "DENIED\r\n";
+		write(fd,msg,strlen(msg));
 	}
 }
 
@@ -479,9 +483,9 @@ IRCServer::listRooms(int fd, const char * user, const char * password, const cha
 		}
 	}
 	else {
-        const char * msg = "DENIED\r\n";    
-	write(fd,msg,strlen(msg));
-        }
+		const char * msg = "DENIED\r\n";    
+		write(fd,msg,strlen(msg));
+	}
 
-	
+
 }
