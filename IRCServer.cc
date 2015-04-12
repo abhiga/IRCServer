@@ -37,7 +37,7 @@ HashTableVoid Users;
 struct Room {
 	char *name;
 	vector<char*> users;
-	vector<char*> messages;
+	vector<char*> messages[100];
 };
 int QueueLength = 5;
 vector<Room> rooms;
