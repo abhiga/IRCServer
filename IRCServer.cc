@@ -426,8 +426,19 @@ IRCServer::leaveRoom(int fd, const char * user, const char * password, const cha
 }
 
 	void
-IRCServer::sendMessage(int fd, const char * user, const char * password, const char * args, const char * args1)
+IRCServer::sendMessage(int fd, const char * user, const char * password, const char * room, const char * mess)
 {
+	bool check = false;
+	int pos = 0;
+	if (checkPassword(fd, user, password)) {
+		for (int i = 0; i < rooms.size(); i++) {
+			if (strcmp(rooms[i].name, room) == 0) {
+				check = true;
+				pos = i;
+				break;
+			}
+		//if (check) {
+		}}	
 }
 
 	void
