@@ -759,3 +759,6 @@ After doing this, you may fix the identity used for this commit with:
  4 files changed, 31 insertions(+), 3 deletions(-)
  create mode 100644 .IRCServer.cc.swo
  rewrite IRCServer (90%)
+[master 4798357] Make IRCServer
+ 3 files changed, 5 insertions(+), 1 deletion(-)
+ rewrite IRCServer (94%)

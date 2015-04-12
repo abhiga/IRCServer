@@ -447,5 +447,16 @@ IRCServer::createRoom(int fd, const char * user, const char * password, const ch
 
 void
 IRCServer::listRooms(int fd, const char * user, const char * password, const char * args) {
+	if(checkPassword(fd, user, password)) {
+		for (int i = 0; i < rooms.size(); i++) {
+			write(fd, rooms[i].name, strlen(rooms[i].name));
+			write(fd, "\r\n", strlen("\r\n"));
+		}
+	}
+	else {
+        const char * msg = "DENIED\r\n";    
+	write(fd,msg,strlen(msg));
+        }
 
+	
 }
