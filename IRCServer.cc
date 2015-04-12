@@ -317,6 +317,7 @@ IRCServer::checkPassword(int fd, const char * user, const char * password) {
 		if(strcmp(password,(char*)pass)==0){
 			return true;
 		}
+		else return false;
 	}
 	else 
 		return false;
@@ -438,7 +439,7 @@ IRCServer::getAllUsers(int fd, const char * user, const char * password,const  c
 	char *ptr;
 	void* pass;
 	char *msg;
-	checkPassword(fd, user, password);
+	//checkPassword(fd, user, password);
 	if(checkPassword(fd, user, password)) {
 		HashTableVoidIterator iterator(&Users);
 		while(iterator.next(ch,pass)) {
