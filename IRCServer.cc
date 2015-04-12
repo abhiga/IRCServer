@@ -416,12 +416,12 @@ IRCServer::leaveRoom(int fd, const char * user, const char * password, const cha
 		if(exist) {
 			rooms[pos].users.erase(rooms[pos].users.begin() + upos);
 			const char * msg = "OK\n";
-	                write(fd,msg,strlen(msg));
+			write(fd,msg,strlen(msg));
 			return;
 		}
-		}
-		const char * msg = "DENIED\r\n";
-		write(fd,msg,strlen(msg));
+	}
+	const char * msg = "DENIED\r\n";
+	write(fd,msg,strlen(msg));
 
 
 }
@@ -431,6 +431,7 @@ IRCServer::sendMessage(int fd, const char * user, const char * password, const c
 {	
 	char *temp = (char*) malloc(sizeof(user) + sizeof(mess) + 5);
 	bool check = false;
+	bool exist = false;
 	int pos = 0;
 	if (checkPassword(fd, user, password)) {
 		for (int i = 0; i < rooms.size(); i++) {
@@ -440,7 +441,14 @@ IRCServer::sendMessage(int fd, const char * user, const char * password, const c
 				break;
 			}
 		}
-		if (check) {
+		if(check) {
+			for (int i = 0; i < rooms[pos].users.size(); i++) {
+				if(strcmp(rooms[pos].users[i], user) == 0) {
+					exist = true;
+					break;
+				}
+			}}
+		if (exist) {
 			count++;
 			if(rooms[pos].messages.size()==100)
 				rooms[pos].messages.erase(rooms[pos].users.begin());
@@ -448,15 +456,15 @@ IRCServer::sendMessage(int fd, const char * user, const char * password, const c
 			strcat(temp," ");
 			strcat(temp, mess);
 			rooms[pos].messages.push_back(strdup(temp));
-			 const char * msg = "OK\n";
-                   	 write(fd,msg,strlen(msg));
-	                 return;
-			}
+			const char * msg = "OK\n";
+			write(fd,msg,strlen(msg));
+			return;
+		}
 	}
 	const char * msg = "DENIED\r\n";
-        write(fd,msg,strlen(msg));
+	write(fd,msg,strlen(msg));
 
-			
+
 }
 
 	void
@@ -467,12 +475,12 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 	int num = atoi(n);
 	if(checkPassword(fd, user, password)) {
 		for (int i = 0; i < rooms.size(); i++) {
-		                         if (strcmp(rooms[i].name, room) == 0) {
-		                                 check = true;
-		                                 pos = i;
-		                                 break;
-		                         }
-	                 }
+			if (strcmp(rooms[i].name, room) == 0) {
+				check = true;
+				pos = i;
+				break;
+			}
+		}
 		if (check) {
 			for (int i = num; i < count; i++) {
 				write(fd, rooms[pos].messages[i], strlen(rooms[pos].messages[i]));
@@ -480,9 +488,9 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 			}
 			return;
 		}
-		}
-		 const char * msg = "DENIED\r\n";
-		 write(fd,msg,strlen(msg));
+	}
+	const char * msg = "DENIED\r\n";
+	write(fd,msg,strlen(msg));
 }
 
 	void
