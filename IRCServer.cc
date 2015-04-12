@@ -37,7 +37,7 @@ HashTableVoid Users;
 struct Room {
 	char *name;
 	vector<char*> users;
-	vector<char*> messages[100];
+	vector<char*> messages;
 };
 int QueueLength = 5;
 vector<Room> rooms;
@@ -427,7 +427,8 @@ IRCServer::leaveRoom(int fd, const char * user, const char * password, const cha
 
 	void
 IRCServer::sendMessage(int fd, const char * user, const char * password, const char * room, const char * mess)
-{
+{	
+	char *temp = (char*) malloc(sizeof(user) + sizeof(mess) + 5);
 	bool check = false;
 	int pos = 0;
 	if (checkPassword(fd, user, password)) {
@@ -437,8 +438,23 @@ IRCServer::sendMessage(int fd, const char * user, const char * password, const c
 				pos = i;
 				break;
 			}
-		//if (check) {
-		}}	
+		}
+		if (check) {
+			if(rooms[pos].messages.size()==100)
+				rooms[pos].messages.erase(rooms[pos].users.begin());
+			strcpy(temp,user);
+			strcat(temp," : ");
+			strcat(temp, mess);
+			rooms[pos].messages.push_back(strdup(temp));
+			 const char * msg = "OK\n";
+                   	 write(fd,msg,strlen(msg));
+	                 return;
+			}
+	}
+	const char * msg = "DENIED\r\n";
+        write(fd,msg,strlen(msg));
+
+			
 }
 
 	void
