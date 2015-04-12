@@ -298,7 +298,7 @@ IRCServer::initialize()
 		while(fscanf(f, "%s", c) == 1) {
 			user = strtok(c, "|");
 			pass = strtok(NULL,"|");
-			printf("%d%d\n",strcmp(user,"abhiga"),strcmp(pass,"abhig"));
+			//printf("%d%d\n",strcmp(user,"abhiga"),strcmp(pass,"abhig"));
 			Users.insertItem(user, pass);
 		}
 	}
