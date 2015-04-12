@@ -34,6 +34,7 @@ const char * usage =
 #include <iostream>
 using namespace std;
 HashTableVoid Users;
+int count = 0;
 struct Room {
 	char *name;
 	vector<char*> users;
@@ -440,10 +441,11 @@ IRCServer::sendMessage(int fd, const char * user, const char * password, const c
 			}
 		}
 		if (check) {
+			count++;
 			if(rooms[pos].messages.size()==100)
 				rooms[pos].messages.erase(rooms[pos].users.begin());
 			strcpy(temp,user);
-			strcat(temp," : ");
+			strcat(temp," ");
 			strcat(temp, mess);
 			rooms[pos].messages.push_back(strdup(temp));
 			 const char * msg = "OK\n";
@@ -458,8 +460,29 @@ IRCServer::sendMessage(int fd, const char * user, const char * password, const c
 }
 
 	void
-IRCServer::getMessages(int fd, const char * user, const char * password, const char * args, const char * args1)
-{
+IRCServer::getMessages(int fd, const char * user, const char * password, const char * n, const char * room)
+{ 
+	int pos = 0;
+	bool check = false;
+	int num = atoi(n);
+	if(checkPassword(fd, user, password)) {
+		for (int i = 0; i < rooms.size(); i++) {
+		                         if (strcmp(rooms[i].name, room) == 0) {
+		                                 check = true;
+		                                 pos = i;
+		                                 break;
+		                         }
+	                 }
+		if (check) {
+			for (int i = num; i < count; i++) {
+				write(fd, rooms[pos].messages[i], strlen(rooms[pos].messages[i]));
+				write(fd, "\r\n", strlen("\r\n"));
+			}
+			return;
+		}
+		}
+		 const char * msg = "DENIED\r\n";
+		 write(fd,msg,strlen(msg));
 }
 
 	void
