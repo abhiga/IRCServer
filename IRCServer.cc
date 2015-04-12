@@ -323,7 +323,7 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 	strcat(store, password);
 	if(!checkPassword(fd, user, password)) {
 		fprintf(file, "%s\n", store);
-		printf("%s\n",store);
+		//printf("%s\n",store);
 		Users.insertItem(user, (void*)password);
 		const char * msg =  "OK\r\n";
 		write(fd, msg, strlen(msg));
