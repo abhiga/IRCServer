@@ -35,12 +35,12 @@ const char * usage =
 using namespace std;
 HashTableVoid Users;
 struct Room {
-	string name;
+	char *name;
 	vector<string> users;
 	vector<string> messages;
 	};
 int QueueLength = 5;
-//vector<Room> rooms;
+vector<Room> rooms;
 int
 IRCServer::open_server_socket(int port) {
 
@@ -397,7 +397,7 @@ IRCServer::getAllUsers(int fd, const char * user, const char * password,const  c
 
 void
 IRCServer::createRoom(int fd, const char * user, const char * password, const char * room) {
-	/*bool check = false;
+	bool check = false;
 	if(checkPassword(fd, user, password)) {
 		for(int i = 0; i < rooms.size(); i++) {
 			if(strcmp(rooms[i].name, room)==0)
@@ -409,7 +409,7 @@ IRCServer::createRoom(int fd, const char * user, const char * password, const ch
 		}
 		else {
 			struct Room nr;
-			nr.name = *room;
+			nr.name = strdup(room);
 			rooms.push_back(nr);
 		}
 
@@ -417,7 +417,7 @@ IRCServer::createRoom(int fd, const char * user, const char * password, const ch
 	else {
 		 const char * msg = "DENIED\r\n";
                  write(fd,msg,strlen(msg));
-	}*/
+	}
 }
 
 void
