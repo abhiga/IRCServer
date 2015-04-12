@@ -850,3 +850,5 @@ After doing this, you may fix the identity used for this commit with:
  rewrite IRCServer (73%)
 [master 187ece6] Make IRCServer
  3 files changed, 29 insertions(+), 3 deletions(-)
+[master 4e52c28] Make IRCServer
+ 3 files changed, 30 insertions(+), 20 deletions(-)
