@@ -436,6 +436,8 @@ IRCServer::createRoom(int fd, const char * user, const char * password, const ch
 			struct Room nr;
 			nr.name = strdup(room);
 			rooms.push_back(nr);
+			const char * msg = "OK\n";
+			write(fd, msg, strlen(msg));
 		}
 
 	}
