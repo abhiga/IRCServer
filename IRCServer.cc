@@ -387,9 +387,39 @@ IRCServer::enterRoom(int fd, const char * user, const char * password, const cha
 	}
 }
 	void
-IRCServer::leaveRoom(int fd, const char * user, const char * password, const char * args)
+IRCServer::leaveRoom(int fd, const char * user, const char * password, const char * room)
 {	
 	bool check = false;
+	int pos = 0;
+	int upos = 0;
+	bool exist = false;
+	if(checkPassword(fd,user,password)) {
+		for (int i = 0; i < rooms.size(); i++) {
+			if(strcmp(rooms[i].name, room) == 0) {
+				pos = i;
+				check = true;
+				break;
+			}
+		}
+		if(check) {
+			for (int i = 0; i < rooms[pos].users.size(); i++) {
+				if (strcmp(rooms[pos].users[i], user) == 0) {
+					upos = i;
+					exist = true;
+					break;
+				}
+			}
+		}
+		if(exist) {
+			rooms[pos].users.erase(rooms[pos].users.begin() + upos);
+			const char * msg = "OK\n";
+	                write(fd,msg,strlen(msg));
+			return;
+		}
+		}
+		const char * msg = "DENIED\r\n";
+		write(fd,msg,strlen(msg));
+
 
 }
 
