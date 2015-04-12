@@ -337,18 +337,41 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 }
 
 	void
-IRCServer::enterRoom(int fd, const char * user, const char * password, const char * args)
-{
+IRCServer::enterRoom(int fd, const char * user, const char * password, const char * room)
+{	int pos = 0;
+	bool check = false;
 	if(checkPassword(fd, user, password)) {
-		const char * msg = "OK\r\n";
-		write(fd,msg,strlen(msg));
+		for (int i = 0; i < rooms.size(); i++) {
+			if(strcmp(rooms[i].name, room) == 0) {
+				pos = i;
+				check = true;
+				break;
+			}
+			
+			 }
+		if(check) { 
+			for(int i = 0; i < rooms[pos].users.size(); i++) {
+				if(strcmp(rooms[pos].users[i],user) == 0) {
+					const char * msg = "DENIED\r\n";
+				        write(fd,msg,strlen(msg));
+					return;
+				}
+			}
+					rooms[pos].users.push_back(strdup(user));
+					const char * msg = "OK\n";
+					write(fd,msg,strlen(msg));
+				
 	}
 	else {
 		const char * msg = "DENIED\r\n";
 		write(fd,msg,strlen(msg));
 	}
 }
-
+else {
+                 const char * msg = "DENIED\r\n";
+                write(fd,msg,strlen(msg));
+       }
+}
 	void
 IRCServer::leaveRoom(int fd, const char * user, const char * password, const char * args)
 {
@@ -410,7 +433,7 @@ IRCServer::getAllUsers(int fd, const char * user, const char * password,const  c
 			//strcat(msg, ch);
 
 			write(fd,ch,strlen(ch));
-			write(fd,"\r\n",strlen("\r\n"));
+			write(fd,"\n",strlen("\n"));
 		}
 	}
 	else {
