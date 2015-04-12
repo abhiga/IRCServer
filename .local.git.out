@@ -752,3 +752,6 @@ After doing this, you may fix the identity used for this commit with:
  4 files changed, 27 insertions(+), 2 deletions(-)
  delete mode 100644 .password.txt.swp
  rewrite IRCServer (95%)
+[master babce1f] Make IRCServer
+ 3 files changed, 9 insertions(+), 5 deletions(-)
+ rewrite IRCServer (89%)

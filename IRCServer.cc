@@ -36,7 +36,7 @@ using namespace std;
 HashTableVoid Users;
 struct Room {
 	char *name;
-	vector<string> users;
+	vector<char*> users;
 	vector<string> messages;
 	};
 int QueueLength = 5;
@@ -365,8 +365,33 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 }
 
 	void
-IRCServer::getUsersInRoom(int fd, const char * user, const char * password, const char * args)
-{
+IRCServer::getUsersInRoom(int fd, const char * user, const char * password, const char * room)
+{	bool check = false;
+	int pos = 0;
+	if(checkPassword(fd, user, password)) {
+               for(int i = 0; i < rooms.size(); i++) {
+	       		if(strcmp(rooms[i].name, room) == 0) {
+				check = true;
+				pos = i;
+				break;
+			}
+         	}
+		if(check) {
+			for (int i = 0; i < rooms[pos].users.size(); i++) {
+				write(fd, rooms[pos].users[i],strlen(rooms[pos].users[i]));
+				write(fd, "\r\n", strlen("\r\n"));
+			}
+		}
+		else {
+			const char * msg = "DENIED\r\n";
+	            	write(fd,msg,strlen(msg));
+		}
+	}
+        else {
+                const char * msg = "DENIED\r\n";
+                write(fd,msg,strlen(msg));
+         }
+
 }
 
 	void
