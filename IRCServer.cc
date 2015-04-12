@@ -439,7 +439,7 @@ IRCServer::getAllUsers(int fd, const char * user, const char * password,const  c
 			//strcat(msg, ch);
 
 			write(fd,ch,strlen(ch));
-			write(fd,"\n",strlen("\n"));
+			write(fd,"\r\n",strlen("\r\n"));
 		}
 	}
 	else {
