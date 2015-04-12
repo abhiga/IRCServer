@@ -242,6 +242,7 @@ IRCServer::processRequest( int fd )
 	const char * user = ch[1];
 	const char * password = ch[2];
 	const char * args = ch[3];
+	const char * args1 = ch[4];
 	//memset(ch, NULL, sizeof(ch[0][0] * 10 * 100));
 
 	printf("command=%s\n", command);
