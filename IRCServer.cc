@@ -334,7 +334,8 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 	strcpy(store,user);
 	strcat(store, "|");
 	strcat(store, password);
-	if(!checkPassword(fd, user, password)) {
+	void * s;
+	if(!Users.find(user, &s)) {
 		fprintf(file, "%s\n", store);
 		//printf("%s\n",store);
 		Users.insertItem(user, (void*)password);
