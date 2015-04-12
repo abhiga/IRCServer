@@ -299,7 +299,7 @@ IRCServer::initialize()
 			user = strtok(c, "|");
 			pass = strtok(NULL,"|");
 			printf("%d%d\n",strcmp(user,"agaurav"),strcmp(pass,"purdue"));
-			Users.insertItem(user,(void*) pass);
+			Users.insertItem(strdup(user),(void*) strdup(pass));
 		}
 	}
 	// Initialize users in room
