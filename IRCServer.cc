@@ -312,9 +312,11 @@ bool
 IRCServer::checkPassword(int fd, const char * user, const char * password) {
 	// Here check the password
 	void *pass; //= (char*) malloc(100*sizeof(char));
-	if(Users.find(user, &pass))
-		if(strcmp(password,(char*)pass)==0)
+	if(Users.find(user, &pass)){
+		if(strcmp(password,(char*)pass)==0){
 			return true;
+		}
+	}
 	else 
 		return false;
 }
