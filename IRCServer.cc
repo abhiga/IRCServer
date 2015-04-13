@@ -538,8 +538,8 @@ IRCServer::getAllUsers(int fd, const char * user, const char * password,const  c
 			//strcpy(ptr,ch);
 			//strcat(ptr, " \r\n");
 			//strcat(msg, ch);
-			ptr = strdup(ch);
-			write(fd,ptr,strlen(ptr));
+			//ptr = strdup(ch);
+			write(fd,ch,strlen(ch));
 			write(fd,"\r\n",strlen("\r\n"));
 		}
 	}
