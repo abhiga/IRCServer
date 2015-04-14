@@ -512,7 +512,13 @@ IRCServer::getUsersInRoom(int fd, const char * user, const char * password, cons
 		}
 		if(check) {
 			for (int i = 0; i < rooms[pos].users.size(); i++) {
-				write(fd, rooms[pos].users[i],strlen(rooms[pos].users[i]));
+				users.push_back(strdup(rooms[pos].users[i]));
+			}
+			sArray();
+			for (int i = 0; i < users.size(); i++) {
+			        write(fd,users[i],strlen(users[i]));
+
+				//write(fd, rooms[pos].users[i],strlen(rooms[pos].users[i]));
 				write(fd, "\r\n", strlen("\r\n"));
 			}
 		}
