@@ -491,7 +491,7 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 		}
 		if (check) {
 			for (int i = num + 1; i < count; i++) {
-				write(fd, &count, sizeof(i));
+				write(fd, &i, sizeof(i));
 				write(fd, rooms[pos].messages[i], strlen(rooms[pos].messages[i]));
 				write(fd, "\r\n", strlen("\r\n"));
 			}
