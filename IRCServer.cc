@@ -481,6 +481,7 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 	int pos = 0;
 	bool check = false;
 	int num = atoi(n);
+	char number[4];
 	if(checkPassword(fd, user, password)) {
 		for (int i = 0; i < rooms.size(); i++) {
 			if (strcmp(rooms[i].name, room) == 0) {
@@ -491,7 +492,8 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 		}
 		if (check) {
 			for (int i = num + 1; i < count; i++) {
-				write(fd, &i, sizeof(i));
+				sprintf(number, "%d", i);
+				write(fd, number, strlen(number));
 				write(fd, rooms[pos].messages[i], strlen(rooms[pos].messages[i]));
 				write(fd, "\r\n", strlen("\r\n"));
 			}
