@@ -418,7 +418,7 @@ IRCServer::leaveRoom(int fd, const char * user, const char * password, const cha
 		}
 		if(exist) {
 			rooms[pos].users.erase(rooms[pos].users.begin() + upos);
-			const char * msg = "OK\n";
+			const char * msg = "OK\r\n";
 			write(fd,msg,strlen(msg));
 			return;
 		}
