@@ -34,6 +34,9 @@ const char * usage =
 #include <iostream>
 using namespace std;
 HashTableVoid Users;
+vector<char*> users;
+//vector<char*> pass;
+void sArray();
 int count = 0;
 struct Room {
 	char *name;
@@ -539,7 +542,11 @@ IRCServer::getAllUsers(int fd, const char * user, const char * password,const  c
 			//strcat(ptr, " \r\n");
 			//strcat(msg, ch);
 			//ptr = strdup(ch);
-			write(fd,ch,strlen(ch));
+			users.push_back(strdup(ch));
+		}
+			sArray();
+		for (int i = 0; i < users.size(); i++) {
+			write(fd,users[i],strlen(users[i]));
 			write(fd,"\r\n",strlen("\r\n"));
 		}
 	}
@@ -591,4 +598,17 @@ IRCServer::listRooms(int fd, const char * user, const char * password, const cha
 	}
 
 
+}
+void sArray() {
+char * temp = (char*) malloc(100*sizeof(char));
+	for (int i = 0; i< users.size(); i++) {
+		for (int j = 0; j < users.size() - 1; j++) {
+			if(strcmp(users[j], users[j+1]) > 0) {
+				strcpy(temp, users[j]);
+				strcpy(users[j],users[j+1]);
+				strcpy(users[j+1], temp);
+			}
+		}
+	}
+free(temp);
 }
