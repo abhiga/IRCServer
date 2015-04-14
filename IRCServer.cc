@@ -222,9 +222,9 @@ IRCServer::processRequest( int fd )
 	//printf("COMMAND <user> <password> <arguments>. See below.\n");
 	//printf("You need to separate the commandLine into those components\n");
 	//printf("For now, command, user, and password are hardwired.\n");
-	char ch[5][100];
+	char ch[5][1000];
 	for(int i = 0; i<5; i++) {
-		for (int j = 0; j < 100; j++) {
+		for (int j = 0; j < 1000; j++) {
 			ch[i][j] = 0;
 		}
 	}
@@ -232,7 +232,7 @@ IRCServer::processRequest( int fd )
 	//printf("abcd\n");
 	int i = 0, j = 0;
 	while(*p != '\0') {
-		if(*p != ' ' || i >= 4)
+		if(*p != ' ' || i == 4)
 			ch[i][j++] = *p;
 		if(*p == ' ' && i < 4) {
 			ch[i][j] = '\0';
