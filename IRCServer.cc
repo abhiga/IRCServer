@@ -437,7 +437,7 @@ IRCServer::leaveRoom(int fd, const char * user, const char * password, const cha
 	void
 IRCServer::sendMessage(int fd, const char * user, const char * password, const char * room, const char * mess)
 {	
-	char *temp = (char*) malloc(sizeof(user) + sizeof(mess) + 5);
+	char *temp = (char*) malloc(sizeof(user) + sizeof(mess) + 100);
 	bool check = false;
 	bool exist = false;
 	int pos = 0;
