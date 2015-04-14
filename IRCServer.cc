@@ -531,7 +531,8 @@ IRCServer::getUsersInRoom(int fd, const char * user, const char * password, cons
 		const char * msg = "DENIED\r\n";
 		write(fd,msg,strlen(msg));
 	}
-
+	write(fd,"\r\n",strlen("\r\n"));
+	
 }
 
 	void
