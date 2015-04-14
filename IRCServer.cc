@@ -500,6 +500,8 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 IRCServer::getUsersInRoom(int fd, const char * user, const char * password, const char * room)
 {	bool check = false;
 	int pos = 0;
+	char *temp = (char *)malloc(100*sizeof(char));
+	users.clear();
 	if(checkPassword(fd, user, password)) {
 		for(int i = 0; i < rooms.size(); i++) {
 			if(strcmp(rooms[i].name, room) == 0) {
