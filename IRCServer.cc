@@ -464,7 +464,7 @@ IRCServer::sendMessage(int fd, const char * user, const char * password, const c
 			strcat(temp," ");
 			strcat(temp, mess);
 			rooms[pos].messages.push_back(strdup(temp));
-			const char * msg = "OK\n";
+			const char * msg = "OK\r\n";
 			write(fd,msg,strlen(msg));
 			return;
 		}
