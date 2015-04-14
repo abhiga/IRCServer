@@ -498,6 +498,7 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 				write(fd, rooms[pos].messages[i], strlen(rooms[pos].messages[i]));
 				write(fd, "\r\n", strlen("\r\n"));
 			}
+			write(fd, "\r\n", strlen("\r\n"));
 			return;
 		}
 	}
