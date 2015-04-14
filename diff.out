@@ -1,0 +1,8 @@
+56c56
+< OK
+---
+> OK
+68c68
+< DENIED
+---
+> ERROR (No user in room)
