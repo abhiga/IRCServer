@@ -554,6 +554,7 @@ IRCServer::getAllUsers(int fd, const char * user, const char * password,const  c
 		const char * msg = "DENIED\r\n";
 		write(fd,msg,strlen(msg));
 	}
+	write(fd,"\n",strlen("\n"));
 
 }
 
