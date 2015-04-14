@@ -538,7 +538,7 @@ IRCServer::getUsersInRoom(int fd, const char * user, const char * password, cons
 		}
 	}
 	else {
-		const char * msg = "DENIED\r\n";
+		const char * msg = "ERROR (Wrong Password)\r\n";
 		write(fd,msg,strlen(msg));
 	}
 	write(fd,"\r\n",strlen("\r\n"));
