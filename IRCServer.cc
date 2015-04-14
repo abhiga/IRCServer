@@ -378,7 +378,7 @@ IRCServer::enterRoom(int fd, const char * user, const char * password, const cha
 				}
 			}
 			rooms[pos].users.push_back(strdup(user));
-			const char * msg = "OK\n";
+			const char * msg = "OK\r\n";
 			write(fd,msg,strlen(msg));
 
 		}
