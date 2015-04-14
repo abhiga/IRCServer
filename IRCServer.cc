@@ -422,6 +422,10 @@ IRCServer::leaveRoom(int fd, const char * user, const char * password, const cha
 			write(fd,msg,strlen(msg));
 			return;
 		}
+		else {
+			const char * msg = "ERROR\r\n";
+			write(fd,msg,strlen(msg));
+		}
 	}
 	const char * msg = "DENIED\r\n";
 	write(fd,msg,strlen(msg));
