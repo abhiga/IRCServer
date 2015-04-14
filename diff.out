@@ -1,5 +1,0 @@
-68,69c68
-< ERROR
-< DENIED
----
-> ERROR (No user in room)
