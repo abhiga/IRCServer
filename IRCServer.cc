@@ -304,9 +304,9 @@ IRCServer::initialize()
 		while(fscanf(f, "%s", c) == 1) {
 			printf("abhiga\n");
 			user = c;
-			fscanf(f,"%s",c);
+			//fscanf(f,"%s",c);
 			pass = c;
-			fscanf(f,"%s",c);
+			//fscanf(f,"%s",c);
 			printf("%s|%s",user,pass);
 			//printf("%d%d\n",strcmp(user,"agaurav"),strcmp(pass,"purdue"));
 			Users.insertItem(strdup(user),(void*) strdup(pass));
