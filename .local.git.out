@@ -1562,3 +1562,11 @@ After doing this, you may fix the identity used for this commit with:
  4 files changed, 34 insertions(+), 10 deletions(-)
  create mode 100644 password.txt
  rewrite total.txt (100%)
+[master 18361e2] 5 of 5
+ 8 files changed, 309 insertions(+), 9 deletions(-)
+ create mode 100644 diff.out
+ create mode 100644 prog.org.out
+ create mode 100644 prog.out
+ create mode 100644 talk-server.out
+ create mode 100644 total.out
+ rewrite total.txt (88%)
