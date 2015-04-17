@@ -1,0 +1,59 @@
+30,38c30
+< aquaman
+< aquaman
+< mary
+< mary
+< spiderman
+< spiderman
+< superman
+< superman
+< 
+---
+> ERROR (Wrong password)
+42,43c34
+< DENIED
+< 
+---
+> ERROR (Wrong password)
+53c44
+< OK
+---
+> ERROR (Wrong password)
+57c48
+< DENIED
+---
+> ERROR (Wrong password)
+62,63c53
+< superman
+< 
+---
+> ERROR (Wrong password)
+67,68c57
+< ERROR (Wrong Password)
+< 
+---
+> ERROR (Wrong password)
+73c62
+< OK
+---
+> ERROR (Wrong password)
+77c66
+< DENIED
+---
+> ERROR (Wrong password)
+82c71
+< DENIED
+---
+> ERROR (Wrong password)
+86c75
+< DENIED
+---
+> ERROR (Wrong password)
+91c80
+< DENIED
+---
+> ERROR (Wrong password)
+95c84
+< DENIED
+---
+> ERROR (Wrong password)
