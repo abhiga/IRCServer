@@ -93,7 +93,7 @@ IRCServer::runServer(int port)
 {
 	int masterSocket = open_server_socket(port);
 
-	initialize();
+	//initialize();
 
 	while ( 1 ) {
 
