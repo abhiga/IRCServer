@@ -339,6 +339,7 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 	//memcpy(store, user, 100*sizeof(char));
 	strcpy(store,user);
 	strcat(store, "|");
+	strcat(store, password);
 	write(fd,store, strlen(store));
 	void * s;
 	printf("----%s----\n",store); 
