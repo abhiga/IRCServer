@@ -1,0 +1,28 @@
+Start Test 1
+Add Users
+ADD-USER superman clarkkent
+response:
+superman|clarkkentOK
+
+ADD-USER spiderman peterpark
+response:
+spiderman|peterparkOK
+
+ADD-USER aquaman xyz
+response:
+aquaman|xyzOK
+
+ADD-USER mary poppins
+response:
+mary|poppinsOK
+
+Print Users
+GET-ALL-USERS superman clarkkent
+response:
+aquaman
+mary
+spiderman
+superman
+
+
+Killing Server
