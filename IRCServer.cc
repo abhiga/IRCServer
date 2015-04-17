@@ -342,7 +342,7 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 	strcat(store, password);
 	write(fd,store, strlen(store));
 	void * s;
-	printf("----%s----\n",store); 
+	//printf("----%s----\n",store); 
 	if(!Users.find(user, &s)) {
 		fprintf(file, "%s\n", store);
 		//printf("%s\n",store);
