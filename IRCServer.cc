@@ -307,7 +307,7 @@ IRCServer::initialize()
 			//fscanf(f,"%s",c);
 			pass = c;
 			//fscanf(f,"%s",c);
-			printf("%s|%s",user,pass);
+			printf("%s|%s\n",user,pass);
 			//printf("%d%d\n",strcmp(user,"agaurav"),strcmp(pass,"purdue"));
 			Users.insertItem(strdup(user),(void*) strdup(pass));
 		}
