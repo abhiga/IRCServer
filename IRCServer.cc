@@ -333,7 +333,7 @@ IRCServer::checkPassword(int fd, const char * user, const char * password) {
 IRCServer::addUser(int fd, const char * user, const char * password, const char * args)
 {
 	// Here add a new user. For now always return OK.
-	char *store = (char*) malloc(100*sizeof(char));
+	char *store = (char*) malloc(1000*sizeof(char));
 	FILE *file = fopen("password.txt", "a");
 	//store = strdup(user);
 	//memcpy(store, user, 100*sizeof(char));
@@ -354,6 +354,7 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 	}
 	//fprintf(file, "%s\n", store);
 	fclose(file);
+	free(store);
 }
 
 	void
