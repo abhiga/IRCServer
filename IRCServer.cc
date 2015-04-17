@@ -297,15 +297,18 @@ IRCServer::processRequest( int fd )
 IRCServer::initialize()
 {
 	// Open password file
+	int count = 0;
 	char *user, *pass;
 	char *c = (char*) malloc(100*sizeof(char));
+	char *d = (char*) malloc(100*sizeof(char));
 	FILE *f = fopen("password.txt", "r");
 	if(f!=NULL){
 		while(fscanf(f, "%s", c) == 1) {
+			count++;
 			printf("abhiga\n");
 			user = c;
-			//fscanf(f,"%s",c);
-			pass = c;
+			fscanf(f,"%s",d);
+			pass = d;
 			//fscanf(f,"%s",c);
 			printf("%s|%s\n",user,pass);
 			//printf("%d%d\n",strcmp(user,"agaurav"),strcmp(pass,"purdue"));
