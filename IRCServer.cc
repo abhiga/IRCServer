@@ -302,7 +302,7 @@ IRCServer::initialize()
 	FILE *f = fopen("password.txt", "r");
 	if(f!=NULL){
 		while(fscanf(f, "%s", c) == 1) {
-			//printf("abhiga\n");
+			printf("abhiga\n");
 			user = c;
 			fscanf(f,"%s",c);
 			pass = c;
