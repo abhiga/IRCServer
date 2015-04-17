@@ -301,11 +301,13 @@ IRCServer::initialize()
 	char *c = (char*) malloc(100*sizeof(char));
 	FILE *f = fopen("password.txt", "r");
 	if(f!=NULL){
-		while(fscanf(f, "%s\n\n", c) == 1) {
+		while(fscanf(f, "%s", c) == 1) {
 			printf("abhiga\n");
-			user = strtok(c, "\n");
-			pass = strtok(NULL,"\n");
-			printf("%s|%s\n",user,pass);
+			user = c;
+			fscanf(f,"%s",c);
+			pass = c;
+			fscanf(f,"%s",c);
+			printf("%s|%s",user,pass);
 			//printf("%d%d\n",strcmp(user,"agaurav"),strcmp(pass,"purdue"));
 			Users.insertItem(strdup(user),(void*) strdup(pass));
 		}
