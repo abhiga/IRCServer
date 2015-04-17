@@ -305,7 +305,7 @@ IRCServer::initialize()
 	if(f!=NULL){
 		while(fscanf(f, "%s", c) == 1) {
 			count++;
-			printf("abhiga\n");
+			//printf("abhiga\n");
 			user = c;
 			fscanf(f,"%s",d);
 			pass = d;
