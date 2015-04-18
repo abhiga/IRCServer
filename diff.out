@@ -1,0 +1,32 @@
+28c28
+< DENIED
+---
+> ERROR (No room)
+49c49
+< ERROR (Wrong Password)
+---
+> ERROR (Wrong password)
+58c58
+< DENIED
+---
+> OK
+63c63
+< ERROR (Wrong Password)
+---
+> ERROR (Wrong password)
+86c86
+< ERROR (user not in room)
+---
+> ERROR (User not in room)
+91c91
+< ERROR (user not in room)
+---
+> ERROR (User not in room)
+96c96
+< 
+---
+> NO-NEW-MESSAGES
+105c105
+< ERROR (user not in room)
+---
+> ERROR (User not in room)
