@@ -535,7 +535,7 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 		}}}
 		
 		if (exist) {
-			for (int i = num + 1; i < count; i++) {
+			for (int i = num; i < count; i++) {
 				con++;
 				sprintf(number, "%d", i);
 				write(fd, number, strlen(number));
