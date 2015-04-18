@@ -482,7 +482,7 @@ IRCServer::sendMessage(int fd, const char * user, const char * password, const c
 			return;
 		}*/
 		if (exist) {
-			rooms[pos].count++;
+			rooms[pos].count += 1;
 			if(rooms[pos].messages.size()==100)
 				rooms[pos].messages.erase(rooms[pos].users.begin());
 			strcpy(temp,user);
