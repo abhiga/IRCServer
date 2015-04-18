@@ -546,7 +546,7 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 			return;
 		}
 		else {
-			const char * msg = "ERROR (user not in room)\r\n";
+			const char * msg = "ERROR (user not in room)\n";
 			write(fd,msg,strlen(msg));
 			return;
 		}
