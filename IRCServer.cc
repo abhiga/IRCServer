@@ -304,11 +304,13 @@ IRCServer::initialize()
 	FILE *f = fopen("password.txt", "r");
 	if(f!=NULL){
 		while(fscanf(f, "%s", c) == 1) {
-			count++;
+			//count++;
 			//printf("abhiga\n");
-			user = c;
-			fscanf(f,"%s",d);
-			pass = d;
+			//user = c;
+			user = strtok(c,"|");
+			pass = strtok(NULL, "|");
+			//fscanf(f,"%s",d);
+			//pass = d;
 			//fscanf(f,"%s",c);
 			//printf("%s|%s\n",user,pass);
 			//printf("%d%d\n",strcmp(user,"agaurav"),strcmp(pass,"purdue"));
@@ -346,9 +348,9 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 	//store = strdup(user);
 	//memcpy(store, user, 100*sizeof(char));
 	strcpy(store,user);
-	strcat(store, "\n");
+	strcat(store, "|");
 	strcat(store, password);
-	strcat(store, "\n");
+	//strcat(store, "\n");
 	//write(fd,store, strlen(store));
 	void * s;
 	//printf("----%s----\n",store); 
