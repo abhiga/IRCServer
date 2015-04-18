@@ -515,6 +515,7 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 { 
 	int pos = 0;
 	bool check = false;
+	bool exist = false;
 	int num = atoi(n);
 	char number[4];
 	if(checkPassword(fd, user, password)) {
@@ -526,6 +527,14 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 			}
 		}
 		if (check) {
+		 for (int i = 0; i < rooms[pos].users.size(); i++) {
+                         if(strcmp(rooms[pos].users[i], user) == 0) {
+                             exist = true;
+                             break;
+
+		}}}
+		
+		if (exist) {
 			for (int i = num + 1; i < count; i++) {
 				sprintf(number, "%d", i);
 				write(fd, number, strlen(number));
@@ -534,6 +543,11 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 				write(fd, "\r\n", strlen("\r\n"));
 			}
 			write(fd, "\r\n", strlen("\r\n"));
+			return;
+		}
+		else {
+			const char * msg = "ERROR (user not in room)\r\n";
+			write(fd,msg,strlen(msg));
 			return;
 		}
 	}
