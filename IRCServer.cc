@@ -544,7 +544,7 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 				write(fd, "\r\n", strlen("\r\n"));
 			}
 			if(con == 0) {
-				 write(fd, "NO NEW MESSAGES", 15);
+				 write(fd, "NO-NEW-MESSAGES", 15);
 			}
 			write(fd, "\r\n", strlen("\r\n"));
 			return;
