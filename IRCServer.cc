@@ -471,6 +471,10 @@ IRCServer::sendMessage(int fd, const char * user, const char * password, const c
 					break;
 				}
 			}}
+		else {
+			const char * msg = "ERROR (user not in room)\r\n";
+			write(fd,msg,strlen(msg));
+		}
 		if (exist) {
 			count++;
 			if(rooms[pos].messages.size()==100)
