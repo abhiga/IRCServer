@@ -386,7 +386,7 @@ IRCServer::enterRoom(int fd, const char * user, const char * password, const cha
 		if(check) { 
 			for(int i = 0; i < rooms[pos].users.size(); i++) {
 				if(strcmp(rooms[pos].users[i],user) == 0) {
-					const char * msg = "DENIED\r\n";
+					const char * msg = "OK\r\n";
 					write(fd,msg,strlen(msg));
 					return;
 				}
