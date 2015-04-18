@@ -1,0 +1,104 @@
+Start Test 9
+Add Users
+ADD-USER superman clarkkent
+response:
+OK
+
+ADD-USER spiderman peterpark
+response:
+OK
+
+ADD-USER aquaman xyz
+response:
+OK
+
+ADD-USER mary poppins
+response:
+OK
+
+Create Room
+CREATE-ROOM superman clarkkent java-programming
+response:
+OK
+
+Create Room
+CREATE-ROOM spiderman peterpark c-programming
+response:
+OK
+
+Enter room
+ENTER-ROOM superman clarkkent java-programming
+response:
+OK
+
+ENTER-ROOM aquaman xyz java-programming
+response:
+OK
+
+ENTER-ROOM spiderman peterpark c-programming
+response:
+OK
+
+ENTER-ROOM aquaman xyz c-programming
+response:
+OK
+
+ENTER-ROOM mary poppins c-programming
+response:
+OK
+
+Print users in room
+GET-USERS-IN-ROOM superman clarkkent java-programming
+response:
+aquaman
+superman
+
+
+GET-USERS-IN-ROOM mary poppins c-programming
+response:
+aquaman
+mary
+spiderman
+
+
+Enter another user
+ENTER-ROOM spiderman peterpark c-programming
+response:
+DENIED
+
+Print users in room
+GET-USERS-IN-ROOM spiderman peterpark c-programming
+response:
+aquaman
+mary
+spiderman
+
+
+Send message
+SEND-MESSAGE mary poppins c-programming Hi everybody!
+response:
+OK
+
+SEND-MESSAGE mary poppins c-programming Welcome to the talk program!
+response:
+OK
+
+Send message
+SEND-MESSAGE superman clarkkent java-programming Welcome to java-programming!
+response:
+OK
+
+SEND-MESSAGE aquaman xyz java-programming Java is based on C++!
+response:
+OK
+
+Get messages
+GET-MESSAGES superman clarkkent 0 java-programming
+response:
+1 aquaman Java is based on C++!
+2 
+Get messages
+Send message
+Get messages from 0
+Get messages from 2
+Killing Server
