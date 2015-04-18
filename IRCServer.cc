@@ -592,9 +592,9 @@ IRCServer::getUsersInRoom(int fd, const char * user, const char * password, cons
 		}
 	}
 	else {
-		const char * msg = "ERROR (Wrong Password)\n";
+		const char * msg = "ERROR (Wrong Password)";
 		write(fd,msg,strlen(msg));
-		return;
+		//return;
 	}
 	write(fd,"\r\n",strlen("\r\n"));
 	free(temp);
