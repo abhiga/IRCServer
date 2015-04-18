@@ -1,0 +1,20 @@
+98c98,100
+< NO-NEW-MESSAGES
+---
+> 0 superman Welcome to java-programming!
+> 1 aquaman Java is based on C++!
+> 
+103c105,107
+< NO-NEW-MESSAGES
+---
+> 0 mary Hi everybody!
+> 1 mary Welcome to the talk program!
+> 
+117c121,125
+< NO-NEW-MESSAGES
+---
+> 0 mary Hi everybody!
+> 1 mary Welcome to the talk program!
+> 2 spiderman Hi Mary!
+> 3 spiderman Here I am working on cs240
+> 
