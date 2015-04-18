@@ -1,0 +1,50 @@
+4a5,17
+> OK
+> 
+> ADD-USER spiderman peterpark
+> response:
+> OK
+> 
+> ADD-USER aquaman xyz
+> response:
+> OK
+> 
+> ADD-USER mary poppins
+> response:
+> OK
+6a20,23
+> CREATE-ROOM superman clarkkent java-programming
+> response:
+> OK
+> 
+7a25,32
+> ENTER-ROOM superman clarkkent java-programming
+> response:
+> OK
+> 
+> ENTER-ROOM aquaman xyz java-programming
+> response:
+> OK
+> 
+8a34,39
+> GET-USERS-IN-ROOM mary poppins java-programming
+> response:
+> aquaman
+> superman
+> 
+> 
+9a41,44
+> ENTER-ROOM mary poppins java-programming
+> response:
+> OK
+> 
+10a46,49
+> SEND-MESSAGE spiderman peterpark java-programming
+> response:
+> ERROR (user not in room)
+> 
+11a51,54
+> GET-MESSAGES spiderman peterpark 0 java-programming
+> response:
+> ERROR (User not in room)
+> 
