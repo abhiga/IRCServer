@@ -85,7 +85,6 @@ IRCServer::open_server_socket(int port) {
 		perror("listen");
 		exit( -1 );
 	}
-
 	return masterSocket;
 }
 
