@@ -402,7 +402,7 @@ IRCServer::enterRoom(int fd, const char * user, const char * password, const cha
 		}
 	}
 	else {
-		const char * msg = "ERROR (Wrong password)\n";
+		const char * msg = "ERROR (Wrong password)\r\n";
 		write(fd,msg,strlen(msg));
 	}
 }
