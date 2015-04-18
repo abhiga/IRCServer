@@ -512,7 +512,7 @@ IRCServer::sendMessage(int fd, const char * user, const char * password, const c
 
 	void
 IRCServer::getMessages(int fd, const char * user, const char * password, const char * n, const char * room)
-{ 
+{ 	int con = 0;
 	int pos = 0;
 	bool check = false;
 	bool exist = false;
@@ -536,11 +536,15 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 		
 		if (exist) {
 			for (int i = num + 1; i < count; i++) {
+				con++;
 				sprintf(number, "%d", i);
 				write(fd, number, strlen(number));
 				write(fd, " ", strlen(" "));
 				write(fd, rooms[pos].messages[i], strlen(rooms[pos].messages[i]));
 				write(fd, "\r\n", strlen("\r\n"));
+			}
+			if(con == 0) {
+				 write(fd, "NO NEW MESSAGES", 15);
 			}
 			write(fd, "\r\n", strlen("\r\n"));
 			return;
