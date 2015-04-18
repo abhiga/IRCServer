@@ -316,7 +316,8 @@ IRCServer::initialize()
 		}
 	}
 	// Initialize users in room
-
+	free(c);
+	free(d);
 	// Initalize message list
 	//vector<Room> rooms;
 }
@@ -487,17 +488,19 @@ IRCServer::sendMessage(int fd, const char * user, const char * password, const c
 			rooms[pos].messages.push_back(strdup(temp));
 			const char * msg = "OK\r\n";
 			write(fd,msg,strlen(msg));
+			free(temp);
 			return;
 		}
 	}
 	else {
 	                 const char * msg = "ERROR (Wrong password)\r\n";
 	                 write(fd,msg,strlen(msg));
+			 free(temp);
 			 return;
 	     }
 	const char * msg = "DENIED\r\n";
 	write(fd,msg,strlen(msg));
-
+	
 
 }
 
@@ -573,7 +576,7 @@ IRCServer::getUsersInRoom(int fd, const char * user, const char * password, cons
 		write(fd,msg,strlen(msg));
 	}
 	write(fd,"\r\n",strlen("\r\n"));
-	
+	free(temp);
 }
 
 	void
