@@ -475,11 +475,11 @@ IRCServer::sendMessage(int fd, const char * user, const char * password, const c
 					break;
 				}
 			}}
-		else {
+		/*else {
 			const char * msg = "ERROR (user not in room)\r\n";
 			write(fd,msg,strlen(msg));
 			return;
-		}
+		}*/
 		if (exist) {
 			count++;
 			if(rooms[pos].messages.size()==100)
@@ -493,7 +493,11 @@ IRCServer::sendMessage(int fd, const char * user, const char * password, const c
 			free(temp);
 			return;
 		}
-	}
+		else {
+                         const char * msg = "ERROR (user not in room)\r\n";
+                        write(fd,msg,strlen(msg));
+		          return;
+	}}
 	else {
 	                 const char * msg = "ERROR (Wrong password)\r\n";
 	                 write(fd,msg,strlen(msg));
