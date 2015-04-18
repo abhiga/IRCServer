@@ -397,7 +397,7 @@ IRCServer::enterRoom(int fd, const char * user, const char * password, const cha
 
 		}
 		else {
-			const char * msg = "DENIED\r\n";
+			const char * msg = "ERROR (No room)\r\n";
 			write(fd,msg,strlen(msg));
 		}
 	}
