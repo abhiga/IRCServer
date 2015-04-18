@@ -2010,3 +2010,11 @@ After doing this, you may fix the identity used for this commit with:
 [master b323d01] Make IRCServer
  4 files changed, 18 insertions(+), 30 deletions(-)
  delete mode 100644 password.txt
+[master 8b97b29] 5 of 10
+ 9 files changed, 274 insertions(+), 6 deletions(-)
+ create mode 100644 diff.out
+ create mode 100644 password.txt
+ create mode 100644 prog.org.out
+ create mode 100644 prog.out
+ create mode 100644 talk-server.out
+ create mode 100644 total.out
