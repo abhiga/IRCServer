@@ -2459,3 +2459,10 @@ After doing this, you may fix the identity used for this commit with:
  delete mode 100644 prog.out
  delete mode 100644 talk-server.out
  delete mode 100644 total.out
+[master 689b4f3] 0 of 5
+ 9 files changed, 258 insertions(+), 4 deletions(-)
+ create mode 100644 diff.out
+ create mode 100644 prog.org.out
+ create mode 100644 prog.out
+ create mode 100644 talk-server.out
+ create mode 100644 total.out
