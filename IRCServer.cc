@@ -42,6 +42,7 @@ struct Room {
 	char *name;
 	vector<char*> users;
 	vector<char*> messages;
+	int count;
 };
 int QueueLength = 5;
 vector<Room> rooms;
@@ -481,7 +482,7 @@ IRCServer::sendMessage(int fd, const char * user, const char * password, const c
 			return;
 		}*/
 		if (exist) {
-			count++;
+			rooms[pos].count++;
 			if(rooms[pos].messages.size()==100)
 				rooms[pos].messages.erase(rooms[pos].users.begin());
 			strcpy(temp,user);
@@ -535,7 +536,7 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 		}}}
 		
 		if (exist) {
-			for (int i = num; i < count; i++) {
+			for (int i = num; i < rooms[pos].count; i++) {
 				con++;
 				sprintf(number, "%d", i);
 				write(fd, number, strlen(number));
