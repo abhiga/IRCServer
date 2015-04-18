@@ -1,1 +1,1 @@
-./test-server7.sh ./IRCServer 2011   : 0   of 5  
+./test-server8.sh ./IRCServer 2011   : 0   of 5  
