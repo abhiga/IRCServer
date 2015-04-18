@@ -37,7 +37,7 @@ HashTableVoid Users;
 vector<char*> users;
 //vector<char*> pass;
 void sArray();
-int count = 0;
+//int count = 0;
 struct Room {
 	char *name;
 	vector<char*> users;
@@ -455,7 +455,7 @@ IRCServer::leaveRoom(int fd, const char * user, const char * password, const cha
 
 	void
 IRCServer::sendMessage(int fd, const char * user, const char * password, const char * room, const char * mess)
-{	
+{	int count = 0;
 	char *temp = (char*) malloc((sizeof(user) + sizeof(mess) + 100)*sizeof(char));
 	bool check = false;
 	bool exist = false;
@@ -481,7 +481,7 @@ IRCServer::sendMessage(int fd, const char * user, const char * password, const c
 			return;
 		}*/
 		if (exist) {
-			rooms[pos].count += 1;
+			count++;
 			if(rooms[pos].messages.size()==100)
 				rooms[pos].messages.erase(rooms[pos].users.begin());
 			strcpy(temp,user);
@@ -491,6 +491,7 @@ IRCServer::sendMessage(int fd, const char * user, const char * password, const c
 			const char * msg = "OK\r\n";
 			write(fd,msg,strlen(msg));
 			free(temp);
+			rooms[pos].count = rooms[pos].count + count;
 			return;
 		}
 		else {
