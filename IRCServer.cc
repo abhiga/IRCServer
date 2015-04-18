@@ -357,7 +357,7 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 	if(!Users.find(user, &s)) {
 		fprintf(file, "%s\n", store);
 		//printf("%s\n",store);
-		Users.insertItem(user, (void*)password);
+		Users.insertItem(strdup(user), (void*)strdup(password));
 		const char * msg =  "OK\r\n";
 		write(fd, msg, strlen(msg));
 	}
