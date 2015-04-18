@@ -584,6 +584,7 @@ IRCServer::getAllUsers(int fd, const char * user, const char * password,const  c
 	void* pass;
 	char *msg;
 	//checkPassword(fd, user, password);
+	users.clear();
 	if(checkPassword(fd, user, password)) {
 		HashTableVoidIterator iterator(&Users);
 		while(iterator.next(ch,pass)) {
