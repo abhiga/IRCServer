@@ -1,0 +1,39 @@
+100c100,101
+< 2 
+---
+> 
+> 
+101a103,108
+> GET-MESSAGES mary poppins 0 c-programming
+> response:
+> 0 mary Hi everybody!
+> 1 mary Welcome to the talk program!
+> 
+> 
+102a110,117
+> SEND-MESSAGE spiderman peterpark c-programming Hi Mary!
+> response:
+> OK
+> 
+> SEND-MESSAGE spiderman peterpark c-programming Here I am working on cs240
+> response:
+> OK
+> 
+103a119,130
+> GET-MESSAGES mary poppins 0 c-programming
+> response:
+> 0 mary Hi everybody!
+> 1 mary Welcome to the talk program!
+> 2 spiderman Hi Mary!
+> 3 spiderman Here I am working on cs240
+> 
+> 
+> LEAVE-ROOM mary poppins c-programming
+> response:
+> OK
+> 
+104a132,135
+> GET-MESSAGES superman clarkkent 2 java-programming
+> response:
+> NO-NEW-MESSAGES
+> 
