@@ -1,0 +1,88 @@
+Start Test 9
+Add Users
+ADD-USER superman clarkkent
+response:
+OK
+
+ADD-USER spiderman peterpark
+response:
+OK
+
+ADD-USER aquaman xyz
+response:
+OK
+
+ADD-USER mary poppins
+response:
+OK
+
+Create Room
+CREATE-ROOM superman clarkkent java-programming
+response:
+OK
+
+Create Room
+CREATE-ROOM spiderman peterpark c-programming
+response:
+OK
+
+Enter room
+ENTER-ROOM superman clarkkent java-programming
+response:
+OK
+
+ENTER-ROOM aquaman xyz java-programming
+response:
+OK
+
+ENTER-ROOM spiderman peterpark c-programming
+response:
+OK
+
+ENTER-ROOM aquaman xyz c-programming
+response:
+OK
+
+ENTER-ROOM mary poppins c-programming
+response:
+OK
+
+Print users in room
+GET-USERS-IN-ROOM superman clarkkent java-programming
+response:
+aquaman
+superman
+
+
+GET-USERS-IN-ROOM mary poppins c-programming
+response:
+aquaman
+mary
+spiderman
+
+
+Enter another user
+ENTER-ROOM spiderman peterpark c-programming
+response:
+OK
+
+Print users in room
+GET-USERS-IN-ROOM spiderman peterpark c-programming
+response:
+aquaman
+mary
+spiderman
+
+
+Send message
+SEND-MESSAGE mary poppins c-programming Hi everybody!
+response:
+-1270692095OK
+
+Send message
+Get messages
+Get messages
+Send message
+Get messages from 0
+Get messages from 2
+Killing Server

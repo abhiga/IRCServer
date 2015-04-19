@@ -2884,3 +2884,10 @@ After doing this, you may fix the identity used for this commit with:
 [master acf23b0] Make IRCServer
  3 files changed, 10 insertions(+)
  rewrite IRCServer (62%)
+[master 2cc9ee1] Make IRCServer
+ 6 files changed, 3 insertions(+), 496 deletions(-)
+ delete mode 100644 diff.out
+ delete mode 100644 prog.org.out
+ delete mode 100644 prog.out
+ delete mode 100644 talk-server.out
+ delete mode 100644 total.out

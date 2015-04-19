@@ -1,0 +1,58 @@
+80c80,84
+< -1270692095OK
+---
+> OK
+> 
+> SEND-MESSAGE mary poppins c-programming Welcome to the talk program!
+> response:
+> OK
+82a87,94
+> SEND-MESSAGE superman clarkkent java-programming Welcome to java-programming!
+> response:
+> OK
+> 
+> SEND-MESSAGE aquaman xyz java-programming Java is based on C++!
+> response:
+> OK
+> 
+83a96,101
+> GET-MESSAGES superman clarkkent 0 java-programming
+> response:
+> 0 superman Welcome to java-programming!
+> 1 aquaman Java is based on C++!
+> 
+> 
+84a103,108
+> GET-MESSAGES mary poppins 0 c-programming
+> response:
+> 0 mary Hi everybody!
+> 1 mary Welcome to the talk program!
+> 
+> 
+85a110,117
+> SEND-MESSAGE spiderman peterpark c-programming Hi Mary!
+> response:
+> OK
+> 
+> SEND-MESSAGE spiderman peterpark c-programming Here I am working on cs240
+> response:
+> OK
+> 
+86a119,130
+> GET-MESSAGES mary poppins 0 c-programming
+> response:
+> 0 mary Hi everybody!
+> 1 mary Welcome to the talk program!
+> 2 spiderman Hi Mary!
+> 3 spiderman Here I am working on cs240
+> 
+> 
+> LEAVE-ROOM mary poppins c-programming
+> response:
+> OK
+> 
+87a132,135
+> GET-MESSAGES superman clarkkent 2 java-programming
+> response:
+> NO-NEW-MESSAGES
+> 
