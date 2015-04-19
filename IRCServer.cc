@@ -42,7 +42,7 @@ struct Room {
 	char *name;
 	vector<char*> users;
 	vector<char*> messages;
-	int count;
+	int count = 0;
 };
 int QueueLength = 5;
 vector<Room> rooms;
