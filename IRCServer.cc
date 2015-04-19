@@ -483,7 +483,7 @@ IRCServer::sendMessage(int fd, const char * user, const char * password, const c
 		}*/
 		if (exist) {
 			rooms[pos].count += 1;
-			count = 1;
+			count = rooms[pos].count;
 			sprintf(ncheck,"%d",count);
 			write(fd,ncheck,strlen(ncheck));
 			if(rooms[pos].messages.size()==100)
