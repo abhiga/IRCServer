@@ -460,6 +460,7 @@ IRCServer::sendMessage(int fd, const char * user, const char * password, const c
 	bool check = false;
 	bool exist = false;
 	int pos = 0;
+	char ncheck[4];
 	if (checkPassword(fd, user, password)) {
 		for (int i = 0; i < rooms.size(); i++) {
 			if (strcmp(rooms[i].name, room) == 0) {
@@ -482,6 +483,8 @@ IRCServer::sendMessage(int fd, const char * user, const char * password, const c
 		}*/
 		if (exist) {
 			rooms[pos].count += 1;
+			sprintf(ncheck,"%d",rooms[pos].count);
+			write(fd,ncheck,strlen(ncheck));
 			if(rooms[pos].messages.size()==100)
 				rooms[pos].messages.erase(rooms[pos].users.begin());
 			strcpy(temp,user);
