@@ -1,0 +1,33 @@
+cription:
+This project is an implementation of chatServer in C++. There is also a chatClient (https://github.com/abhiga/chatClient) that can be used to interact with this server. Also, multiple users can chat with each other in a chat room.
+
+Using:
+To use it in one window type:
+IRCServer <port>
+Where 1024 < port < 65536.
+
+Now, use chatServer to connect to it.
+(https://github.com/abhiga/chatClient)
+
+OR
+Yu can also use telnet to chat. In another window type:
+telnet <host> <port>
+where <host> is the name of the machine where IRCServer is running.
+It will automatically ask for username and password, etc.
+
+
+
+Functionality:
+This server supports the following commands, which are received over TCP.
+ADD_USER				Add a user to the server
+GET_NEW_MSGS			List the messages in a room.
+SEND_MSG			Send a message through a room.
+CREATE_ROOM			Create a room.
+ENTER_ROOM			Enter a room.
+LIST_ROOMS			List Rooms
+GET_ROOM_USERS		Get the users in a specific room.
+GET_USERS			Get a list of all users.
+INVALID_COMMAND		There is something wrong
+
+The password is saved and backed up automatically. So, that a user don’t have to sign up again and again, even if server is restarted.
+
