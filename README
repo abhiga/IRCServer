@@ -1,4 +1,4 @@
-cription:
+Description:
 This project is an implementation of chatServer in C++. There is also a chatClient (https://github.com/abhiga/chatClient) that can be used to interact with this server. Also, multiple users can chat with each other in a chat room.
 
 Using:
